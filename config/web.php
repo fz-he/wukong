@@ -1,12 +1,13 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
+$_SYSTEM_CONFIG = require(__DIR__ . '/db.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => '',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-//	'defaultRoute'=>'index ',
+	'defaultRoute'=> 'pc/home/index',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -38,7 +39,22 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
+        'db' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_master'],
+		'eachbuyer_slave' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_slave'],
+		'eachbuyer_eb_master' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_eb_master'],
+		'eachbuyer_eb_slave' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_eb_slave'],
+		
+		'urlManager' => [       
+			'enablePrettyUrl' => true,
+            'showScriptName'=>FALSE,
+            'suffix'=>'.html',
+            'rules'=>array(
+                '<controller:\w+>/<id:\d+>’=>’<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>’=>’<controller>/<action>',
+                '<controller:\w+>/<action:\w+>’=>’<controller>/<action>',
+            )
+        ],
+		
     ],
     'params' => $params,
 ];

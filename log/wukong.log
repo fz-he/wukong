@@ -2,3 +2,157 @@
 2015/06/09 18:42:42 [error] 7692#8132: *121 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /site/say&message=Hello%20%20World HTTP/1.1", host: "www.wukong.com"
 2015/06/09 19:03:24 [error] 7692#8132: *127 CreateFile() "D:/webprojects/wukong/web/site/say&message=Hello  World" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /site/say&message=Hello%20%20World HTTP/1.1", host: "www.wukong.com"
 2015/06/09 19:03:24 [error] 7692#8132: *127 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /site/say&message=Hello%20%20World HTTP/1.1", host: "www.wukong.com"
+2015/06/10 09:40:53 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795a5134b2 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 09:40:53 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795a5134b2 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 09:41:19 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795bf14e09 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:19 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795bf14e09 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:26 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795c627496 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:26 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795c627496 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:35 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795cf81046 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:35 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795cf81046 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:43 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795d7a5050 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=site/say&message=Hello%20%20World"
+2015/06/10 09:41:43 [error] 7832#8676: *9 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=557795d7a5050 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=site/say&message=Hello%20%20World"
+2015/06/10 12:06:08 [error] 7832#8676: *281 FastCGI sent in stderr: "PHP Fatal error:  Call to protected method yii\db\ActiveRecord::findByCondition() from context 'app\controllers\CountryController' in D:\webprojects\wukong\controllers\CountryController.php on line 15
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Controller->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:455
+PHP   6. yii\base\InlineAction->runWithParams() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Controller.php:151
+PHP   7. call_user_func_array:{D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:55}() D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:55
+PHP   8. app\controllers\CountryController->actionIndex() D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:55" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET /index.php?r=country%2Findex&page=18 HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=country%2Findex&page=19"
+2015/06/10 12:08:32 [error] 7832#8676: *288 FastCGI sent in stderr: "PHP Fatal error:  Cannot make static method yii\db\ActiveRecord::findByCondition() non static in class app\models\Country in D:\webprojects\wukong\models\Country.php on line 8
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Controller->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:455
+PHP   6. yii\base\InlineAction->runWithParams() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Controller.php:151
+PHP   7. call_user_func_array:{D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:55}() D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:55
+PHP   8. app\controllers\CountryController->actionIndex() D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:55
+PHP   9. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\InlineAction.php:0
+PHP  10. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET /index.php?r=country%2Findex&page=18 HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=country%2Findex&page=19"
+2015/06/10 16:25:16 [error] 7832#8676: *594 CreateFile() "D:/webprojects/wukong/web/pc/home/entry" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:25:16 [error] 7832#8676: *594 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:33:10 [error] 7832#8676: *611 CreateFile() "D:/webprojects/wukong/web/r=pc/home/entry" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /r=pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:33:10 [error] 7832#8676: *611 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /r=pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:40:57 [error] 7832#8676: *619 CreateFile() "D:/webprojects/wukong/web/role/index" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /role/index HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:40:57 [error] 7832#8676: *619 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /role/index HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:41:46 [error] 7832#8676: *619 CreateFile() "D:/webprojects/wukong/web/index.php/role/index" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /index.php/role/index HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:41:46 [error] 7832#8676: *619 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /index.php/role/index HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:42:09 [error] 7832#8676: *619 CreateFile() "D:/webprojects/wukong/web/role/index" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /role/index HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:42:09 [error] 7832#8676: *619 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /role/index HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:49:22 [error] 7832#8676: *635 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fa1261c83 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=pc/home/entry"
+2015/06/10 16:49:22 [error] 7832#8676: *635 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fa1261c83 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=pc/home/entry"
+2015/06/10 16:49:45 [error] 7832#8676: *636 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fa2929371 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?R=pc/home/entry"
+2015/06/10 16:49:45 [error] 7832#8676: *636 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fa2929371 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?R=pc/home/entry"
+2015/06/10 16:49:46 [error] 7832#8676: *636 CreateFile() "D:/webprojects/wukong/web/pc/home/entry" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:49:46 [error] 7832#8676: *636 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 16:49:47 [error] 7832#8676: *635 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fa2b86059 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 16:49:47 [error] 7832#8676: *635 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fa2b86059 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 16:59:49 [error] 7832#8676: *644 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fc84dc8b5 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=pc/home/entry"
+2015/06/10 16:59:49 [error] 7832#8676: *644 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fc84dc8b5 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=pc/home/entry"
+2015/06/10 16:59:58 [error] 7832#8676: *643 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fc8defb6c HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=pc/home/entry"
+2015/06/10 16:59:58 [error] 7832#8676: *643 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar?tag=5577fc8defb6c HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=pc/home/entry"
+2015/06/10 17:06:00 [error] 7832#8676: *652 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=5577fdf83d6c5 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=pc/home/entry"
+2015/06/10 17:06:00 [error] 7832#8676: *652 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=5577fdf83d6c5 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/index.php?r=pc/home/entry"
+2015/06/10 17:06:07 [error] 7832#8676: *652 CreateFile() "D:/webprojects/wukong/web/r=pc/home/entry" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /r=pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 17:06:07 [error] 7832#8676: *652 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /r=pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 17:06:11 [error] 7832#8676: *650 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=5577fe030200c HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=pc/home/entry"
+2015/06/10 17:06:11 [error] 7832#8676: *650 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=5577fe030200c HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/?r=pc/home/entry"
+2015/06/10 17:06:19 [error] 7832#8676: *650 CreateFile() "D:/webprojects/wukong/web/pc/home/entry" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 17:06:19 [error] 7832#8676: *650 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /pc/home/entry HTTP/1.1", host: "www.wukong.com"
+2015/06/10 17:57:38 [error] 8548#5336: *26 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=55780a11d3db2 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 17:57:38 [error] 8548#5336: *26 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=55780a11d3db2 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 17:58:12 [error] 8548#5336: *28 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=55780a342d57d HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 17:58:12 [error] 8548#5336: *28 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=55780a342d57d HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 17:58:35 [error] 8548#5336: *28 CreateFile() "D:/webprojects/wukong/web/debug/default/toolbar.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=55780a4bb52b9 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 17:58:35 [error] 8548#5336: *28 CreateFile() "D:/webprojects/wukong/web/static_pages/us/404.html" failed (3: The system cannot find the path specified), client: 127.0.0.1, server: www.wukong.com, request: "GET /debug/default/toolbar.html?tag=55780a4bb52b9 HTTP/1.1", host: "www.wukong.com", referrer: "http://www.wukong.com/"
+2015/06/10 18:04:03 [error] 3676#8456: *9 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\common\EbController' not found in D:\webprojects\wukong\controllers\pc\HomeController.php on line 13
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:05:29 [error] 3676#8456: *16 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\pc\common\EbController' not found in D:\webprojects\wukong\controllers\pc\HomeController.php on line 13
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:07:09 [error] 3676#8456: *23 FastCGI sent in stderr: "PHP Parse error:  syntax error, unexpected 'app' (T_STRING) in D:\webprojects\wukong\controllers\pc\HomeController.php on line 4
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:07:23 [error] 3676#8456: *23 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\pc\common\EbController' not found in D:\webprojects\wukong\controllers\pc\HomeController.php on line 13
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:15:12 [error] 3676#8456: *32 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\pc\common\EbController' not found in D:\webprojects\wukong\controllers\pc\HomeController.php on line 13
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:17:26 [error] 3676#8456: *37 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\pc\common\EbController' not found in D:\webprojects\wukong\controllers\pc\HomeController.php on line 13
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:18:03 [error] 3676#8456: *37 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\pc\common\EbController' not found in D:\webprojects\wukong\controllers\pc\HomeController.php on line 13
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/10 18:20:04 [error] 3676#8456: *44 FastCGI sent in stderr: "PHP Fatal error:  Cannot use app\controllers\pc\common\EbController as EbController because the name is already in use in D:\webprojects\wukong\controllers\pc\HomeController.php on line 11
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"

@@ -34,7 +34,7 @@ class SiteController extends Controller
         ];
     }
 	
-	 public function actionSay($message = 'Hello'){
+	public function actionSay($message = 'Hello'){
 		 //first action
         return $this->render('say', ['message' => $message]);	
     }
