@@ -6,6 +6,7 @@ $_SYSTEM_CONFIG = require(__DIR__ . '/db.php');
 $config = [
     'id' => '',
     'basePath' => dirname(__DIR__),
+	'language' => 'ru' ,
     'bootstrap' => ['log'],
 	'defaultRoute'=> 'pc/home/index',
     'components' => [
@@ -43,7 +44,7 @@ $config = [
 		'eachbuyer_slave' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_slave'],
 		'eachbuyer_eb_master' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_eb_master'],
 		'eachbuyer_eb_slave' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_eb_slave'],
-		
+				
 		'urlManager' => [       
 			'enablePrettyUrl' => true,
             'showScriptName'=>FALSE,
@@ -54,6 +55,17 @@ $config = [
                 '<controller:\w+>/<action:\w+>’=>’<controller>/<action>',
             )
         ],
+		'i18n' => [
+			'translations' => [
+				'*' => [//@todo 这样相当于所以的语言文件都加载了，影响性能
+					'class'=>'yii\i18n\PhpMessageSource',
+					'basePath' => '@app/languages',
+					'fileMap' => [           
+						//'common' => 'common.php',       
+					],
+				]
+			]
+		]
 		
     ],
     'params' => $params,

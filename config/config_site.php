@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
 /*
 | -------------------------------------------------------------------
 | Site Config
@@ -50,7 +50,7 @@ define('ROOT_PATH', str_replace('application/config/config_site.php', '', str_re
 | static file version
 |--------------------------------------------------------------------------
 */
-define( 'STATIC_FILE_VERSION' , $_SYSTEM_CONFIG['url_config']['static_file_version'] );
+//define( 'STATIC_FILE_VERSION' , $_SYSTEM_CONFIG['url_config']['static_file_version'] );
 
 /*
  |--------------------------------------------------------------------------
@@ -58,7 +58,7 @@ define( 'STATIC_FILE_VERSION' , $_SYSTEM_CONFIG['url_config']['static_file_versi
 |--------------------------------------------------------------------------
 | config_item('base_url') : $config['base_url'] in config.php:
 */
-define('BASIC_URL',config_item('base_url').'/');
+//define('BASIC_URL',config_item('base_url').'/');
 define( 'CUSTOM_SERVICE_EMAIL', 'cs@'.COMMON_DOMAIN );
 
 //检测移动版 修改配置文件 @add 20150204 11:49

@@ -1,9 +1,10 @@
 <?php
 namespace app\models;
 
-use yii\base\Model;
+use app\models\common\EbARModel;
+use app\components\helpers\ArrayHelper;
 
-class Appmodel extends Model {
+class Appmodel extends EbARModel {
 	//追踪代码用,见工单15787
 	public static $gaEcommProdid = array(
 		'us' => 'usd',
@@ -32,7 +33,7 @@ class Appmodel extends Model {
 
 	public function getConfig($key,$default = ''){
 		if($this->_config === null) $this->_loadShopConfig();
-		return id2name($key,$this->_config,$default);
+		return ArrayHelper::id2name($key,$this->_config,$default);
 	}
 
 	/**

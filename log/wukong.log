@@ -156,3 +156,612 @@ PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisof
 PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
 PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
 PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 09:23:39 [error] 5928#5908: *1 FastCGI sent in stderr: "PHP Fatal error:  Cannot use app\models\RoleSearch as RoleSearch because the name is already in use in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 8
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288
+PHP  10. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 09:23:45 [error] 5928#5908: *1 FastCGI sent in stderr: "PHP Fatal error:  Cannot use app\models\RoleSearch as RoleSearch because the name is already in use in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 8
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. class_exists() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:563
+PHP   8. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:0
+PHP   9. include() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:288
+PHP  10. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:16:04 [error] 5928#5908: *44 FastCGI sent in stderr: "PHP Fatal error:  Namespace declaration statement has to be the very first statement in the script in D:\webprojects\wukong\libraries\Session.php on line 3
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:20:49 [error] 5928#5908: *48 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined function app\libraries\get_instance() in D:\webprojects\wukong\libraries\Session.php on line 18
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:20:52 [error] 5928#5908: *48 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined function app\libraries\get_instance() in D:\webprojects\wukong\libraries\Session.php on line 18
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:23:58 [error] 5928#5908: *53 FastCGI sent in stderr: "PHP Fatal error:  Call to a member function cookie() on a non-object in D:\webprojects\wukong\libraries\Session.php on line 122
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:19" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:31:07 [error] 5928#5908: *57 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 123
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:20" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:31:54 [error] 5928#5908: *57 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 124
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:21" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:33:30 [error] 5928#5908: *64 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 124
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:21" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:33:31 [error] 5928#5908: *64 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 124
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:21" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:33:53 [error] 5928#5908: *64 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 124
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:21" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:33:54 [error] 5928#5908: *64 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 124
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:21" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:33:56 [error] 5928#5908: *64 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 124
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:21" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:35:11 [error] 5928#5908: *74 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 126
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:23" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:35:12 [error] 5928#5908: *74 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 126
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:23" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:52:50 [error] 5928#5908: *89 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method Yii::app() in D:\webprojects\wukong\libraries\Session.php on line 128
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:23" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:53:03 [error] 5928#5908: *89 FastCGI sent in stderr: "PHP Fatal error:  Function name must be a string in D:\webprojects\wukong\libraries\Session.php on line 128
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:23" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 10:53:27 [error] 5928#5908: *89 FastCGI sent in stderr: "PHP Fatal error:  Function name must be a string in D:\webprojects\wukong\libraries\Session.php on line 128
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:12
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48
+PHP  13. app\libraries\Session->_getIP() D:\webprojects\wukong\libraries\Session.php:23" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 11:14:40 [error] 5928#5908: *135 FastCGI sent in stderr: "An Error occurred while handling another error:
+exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "site/error".' in D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\webprojects\wukong\vendor\yiisoft\yii2\web\ErrorHandler.php(80): yii\base\Module->runAction('site/error')
+#1 D:\webprojects\wukong\vendor\yiisoft\yii2\base\ErrorHandler.php(101): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#2 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#3 {main}
+Previous exception:
+exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\webprojects\wukong\vendor\yiisoft\yii2\web\Request.php:187
+Stack trace:
+#0 D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php(75): yii\web\Request->resolve()
+#1 D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\webprojects\wukong\web\index.php(12): yii\base\Application->run()
+#3 {main}
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData',
+    'APPDATA' => 'C:\\Users\\Administrator\\AppData\\Roaming',
+    'asl_log' => 'Destination=file',
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files',
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files',
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files',
+    'COMPUTERNAME' => 'HANTINGTING',
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe',
+    'FP_NO_HOST_CHECK' => 'NO',
+    'GIT_SSH' => 'D:\\Program Files\\TortoiseSVN\\bin\\TortoisePlink.exe',
+    'HOMEDRIVE' => 'C:',
+    'HOMEPATH' => '\\Users\\Administrator',
+    'LOCALAPPDATA' => 'C:\\Users\\Administrator\\AppData\\Local',
+    'LOGONSERVER' => '\\\\HANTINGTING',
+    'NUMBER_OF_PROCESSORS' => '4',
+    'OS' => 'Windows_NT',
+    'Path' => 'C:\\ProgramData\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\NVIDIA Corporation\
+2015/06/11 11:21:02 [error] 5928#5908: *144 FastCGI sent in stderr: "PHP Notice:  Undefined variable: _SYSTEM_CONFIG in D:\webprojects\wukong\config\config_site.php on line 53
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. require() D:\webprojects\wukong\web\index.php:9
+PHP Fatal error:  Call to undefined function config_item() in D:\webprojects\wukong\config\config_site.php on line 61
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. require() D:\webprojects\wukong\web\index.php:9" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 11:21:47 [error] 5928#5908: *144 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined function config_item() in D:\webprojects\wukong\config\config_site.php on line 61
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. require() D:\webprojects\wukong\web\index.php:9" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 11:22:09 [error] 5928#5908: *144 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined function app\libraries\id2name() in D:\webprojects\wukong\libraries\Session.php on line 44
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:16
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 11:53:45 [error] 5928#5908: *149 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined function app\libraries\id2name() in D:\webprojects\wukong\libraries\Session.php on line 45
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Session->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:48" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 12:07:08 [error] 5928#5908: *163 FastCGI sent in stderr: "PHP Fatal error:  Call to a member function currentLanguageId() on a non-object in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 178
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_resolveCurrentCurrency() D:\webprojects\wukong\controllers\pc\common\EbController.php:57" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 12:30:09 [error] 5928#5908: *174 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\libraries\stdClass' not found in D:\webprojects\wukong\libraries\Memcache.php on line 209
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Memcache->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:59" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:14:20 [error] 5928#5908: *194 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method app\libraries\Memcache::getInstance() in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 52
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:15:00 [error] 5928#5908: *194 FastCGI sent in stderr: "PHP Fatal error:  Using $this when not in object context in D:\webprojects\wukong\libraries\Memcache.php on line 221
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Memcache::getInstance() D:\webprojects\wukong\controllers\pc\common\EbController.php:52" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:17:19 [error] 5928#5908: *201 FastCGI sent in stderr: "PHP Parse error:  syntax error, unexpected ')', expecting '(' in D:\webprojects\wukong\libraries\Memcache.php on line 221
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. yii\BaseYii::autoload() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:20:18 [error] 5928#5908: *205 FastCGI sent in stderr: "PHP Fatal error:  Access to undeclared static property: app\libraries\Memcache::$_instance in D:\webprojects\wukong\libraries\Memcache.php on line 221
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Memcache::getInstance() D:\webprojects\wukong\controllers\pc\common\EbController.php:52" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:23:05 [error] 5928#5908: *211 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\models\common\Memcache' not found in D:\webprojects\wukong\models\common\EbARModel.php on line 39
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\models\Appmodel->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:54
+PHP  13. app\models\common\EbARModel->__construct() D:\webprojects\wukong\models\Appmodel.php:22" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:23:54 [error] 5928#5908: *211 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\models\common\Memcache' not found in D:\webprojects\wukong\models\common\EbARModel.php on line 32
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\models\Appmodel->__construct() D:\webprojects\wukong\controllers\pc\common\EbController.php:54
+PHP  13. app\models\common\EbARModel->__construct() D:\webprojects\wukong\models\Appmodel.php:22" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:30:11 [error] 5928#5908: *218 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method app\libraries\Log::getInstance() in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 51
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:31:22 [error] 5928#5908: *222 FastCGI sent in stderr: "PHP Fatal error:  Access to undeclared static property: app\libraries\Log::$_instance in D:\webprojects\wukong\libraries\Log.php on line 40
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Log::getInstance() D:\webprojects\wukong\controllers\pc\common\EbController.php:51" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 14:31:51 [error] 5928#5908: *222 FastCGI sent in stderr: "PHP Fatal error:  Access to undeclared static property: app\libraries\Log::$_instance in D:\webprojects\wukong\libraries\Log.php on line 41
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\libraries\Log::getInstance() D:\webprojects\wukong\controllers\pc\common\EbController.php:51" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 15:44:29 [error] 5928#5908: *253 FastCGI sent in stderr: "An Error occurred while handling another error:
+exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "site/error".' in D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\webprojects\wukong\vendor\yiisoft\yii2\web\ErrorHandler.php(80): yii\base\Module->runAction('site/error')
+#1 D:\webprojects\wukong\vendor\yiisoft\yii2\base\ErrorHandler.php(101): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#2 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#3 {main}
+Previous exception:
+exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "".' in D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('', Array)
+#1 D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\webprojects\wukong\web\index.php(17): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\webprojects\wukong\web\index.php(17): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData',
+    'APPDATA' => 'C:\\Users\\Administrator\\AppData\\Roaming',
+    'asl_log' => 'Destination=file',
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files',
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files',
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files',
+    'COMPUTERNAME' => 'HANTINGTING',
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe',
+    'FP_NO_HOST_CHECK' => 'NO',
+    'G
+2015/06/11 16:25:10 [error] 5928#5908: *297 FastCGI sent in stderr: "PHP Warning:  Creating default object from empty value in D:\webprojects\wukong\web\index.php on line 16
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 17:34:09 [error] 5928#5908: *364 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined function app\controllers\pc\common\is_email() in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 502
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_addUserInfo() D:\webprojects\wukong\controllers\pc\common\EbController.php:67" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 17:38:42 [error] 5928#5908: *373 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method app\models\common\EbARModel::_getBaseInstanceObj() in D:\webprojects\wukong\models\UserModel.php on line 22
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_addUserInfo() D:\webprojects\wukong\controllers\pc\common\EbController.php:68
+PHP  13. app\models\UserModel::getInstanceObj() D:\webprojects\wukong\controllers\pc\common\EbController.php:503" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 18:07:49 [error] 5928#5908: *400 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\models\Customer' not found in D:\webprojects\wukong\models\UserModel.php on line 96
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_addUserInfo() D:\webprojects\wukong\controllers\pc\common\EbController.php:68
+PHP  13. app\models\UserModel->getUserByName() D:\webprojects\wukong\controllers\pc\common\EbController.php:507" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 18:33:00 [error] 5928#5908: *441 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method app\models\User::find() in D:\webprojects\wukong\models\UserModel.php on line 93
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_addUserInfo() D:\webprojects\wukong\controllers\pc\common\EbController.php:68
+PHP  13. app\models\UserModel->getUserByName() D:\webprojects\wukong\controllers\pc\common\EbController.php:507" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 18:34:07 [error] 5928#5908: *441 FastCGI sent in stderr: "PHP Fatal error:  Call to undefined method app\models\User::find() in D:\webprojects\wukong\models\UserModel.php on line 93
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_addUserInfo() D:\webprojects\wukong\controllers\pc\common\EbController.php:68
+PHP  13. app\models\UserModel->getUserByName() D:\webprojects\wukong\controllers\pc\common\EbController.php:507" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"
+2015/06/11 18:34:29 [error] 5928#5908: *441 FastCGI sent in stderr: "PHP Fatal error:  Class 'app\controllers\pc\common\UserModel' not found in D:\webprojects\wukong\controllers\pc\common\EbController.php on line 503
+PHP Stack trace:
+PHP   1. {main}() D:\webprojects\wukong\web\index.php:0
+PHP   2. yii\base\Application->run() D:\webprojects\wukong\web\index.php:17
+PHP   3. yii\web\Application->handleRequest() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Application.php:375
+PHP   4. yii\base\Module->runAction() D:\webprojects\wukong\vendor\yiisoft\yii2\web\Application.php:84
+PHP   5. yii\base\Module->createController() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:449
+PHP   6. yii\base\Module->createControllerByID() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:521
+PHP   7. yii\BaseYii::createObject() D:\webprojects\wukong\vendor\yiisoft\yii2\base\Module.php:568
+PHP   8. yii\di\Container->get() D:\webprojects\wukong\vendor\yiisoft\yii2\BaseYii.php:340
+PHP   9. yii\di\Container->build() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:151
+PHP  10. ReflectionClass->newInstanceArgs() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  11. app\controllers\pc\common\EbController->__construct() D:\webprojects\wukong\vendor\yiisoft\yii2\di\Container.php:366
+PHP  12. app\controllers\pc\common\EbController->_addUserInfo() D:\webprojects\wukong\controllers\pc\common\EbController.php:68" while reading response header from upstream, client: 127.0.0.1, server: www.wukong.com, request: "GET / HTTP/1.1", upstream: "fastcgi://127.0.0.1:9000", host: "www.wukong.com"

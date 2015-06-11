@@ -1,7 +1,9 @@
 <?php
+$_SYSTEM_CONFIG = require(__DIR__ . '/db.php');
 
 return [
     'adminEmail' => 'admin@example.com',
+	'eb_db_config' => $_SYSTEM_CONFIG['eb_db_config'],
 	'language_list' => [
 		1 => array('code'=>'us','title'=>'English','currency'=>'USD','common_code'=>'en'),
 		2 => array('code'=>'de','title'=>'Deutsch','currency'=>'EUR','common_code'=>'de'),

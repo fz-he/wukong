@@ -3,12 +3,18 @@
 namespace app\controllers\pc\common;
 
 use Yii;
-use app\models\Role;
-use app\models\RoleSearch;
-use app\models\RoleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\libraries\Session;
+use app\libraries\Memcache;
+use app\libraries\Log;
+use app\models\Appmodel;
+use app\models\Users;
+use app\components\helpers\ArrayHelper;
+use app\components\helpers\HelpOther;
+use app\components\helpers\HelpUrl;
+use app\components\helpers\OtherHelper;
 
 class EbController extends Controller {
 
@@ -16,8 +22,11 @@ class EbController extends Controller {
 	/*
 	 * databases master&slave
 	 */
-	public $db_read = NULL;
-	public $db_write = NULL;
+
+	public $session = NULL;
+	public $memcache = NULL;
+	public $log = NULL;
+	public $m_app = NULL;
 
 	/*
 	 * data used by view
@@ -40,37 +49,13 @@ class EbController extends Controller {
 		$current_page = strtolower(get_class($this));
 		$this->_view_data['current_page'] = $current_page;
 
-		/*
-		 * load basic libraries/helper
-		 */
-//		$this->load->helper(array( 'url' , 'array' , 'other' , 'language' ));
-//		$this->load->library(array('memcache','session','log'));
-//		$this->load->model('Appmodel','m_app');
+		$this->log =  Log::getInstance();
+		$this->memcache =  Memcache::getInstance();
+		$this->session =  Session::getInstance();
+		$this->m_app = new Appmodel;
 
-		/*
-		 * get language&currency & save into session
-		 */
 		$this->_view_data['language_code'] = $this->_resolveCurrentLanguage();
 		$this->_view_data['currency'] = $this->_resolveCurrentCurrency();
-
-		/*
-		 * load language
-		 */
-		$this->load->language('common',$this->m_app->currentLanguageCode());
-		$this->load->language($current_page,$this->m_app->currentLanguageCode());
-
-		/*
-		 * connect databases master&slave
-		 */
-		$this->db_write = $this->load->database('master',true);
-		$this->db_read = $this->load->database('slave',true);
-		if(!$this->db_read->connected()){
-			$this->db_read = $this->db_write;
-		}
-
-		//连接新的数据库
-		$this->db_ebmaster_write = $this->load->database('eb_master',true);
-		$this->db_ebmaster_read = $this->load->database('eb_slave',true);
 
 		/*
 		 * head banner display
@@ -81,7 +66,7 @@ class EbController extends Controller {
 		 * check user login & save user info into session
 		 */
 		$this->_addUserInfo();
-
+		
 		/*
 		 * webgains
 		 */
@@ -150,7 +135,7 @@ class EbController extends Controller {
 				break;
 			}
 		}
-
+		Yii::$app->language = $language_code;
 		$this->session->set('language_code',$language_code);
 		$this->session->set('language_id',$language_id);
 
@@ -171,17 +156,19 @@ class EbController extends Controller {
 	 * save into session
 	 */
 	protected function _resolveCurrentCurrency(){
-		global $language_list;
+		$params = Yii::$app->params;
+		$language_list = $params['language_list'];
+		
 		$language_id = $this->m_app->currentLanguageId();
-		$currencyFromUrl = $this->input->get('currency');
-		$getCurrency = $this->input->cookie('currencyTypeNew');
+		$currencyFromUrl = Yii::$app->request->get('currency');
+		$getCurrency = OtherHelper::get_cookie('currencyTypeNew');
 		$currency = '';
 		//参数获取货币
 		if($currencyFromUrl !== false){
 			$currency = strtoupper( trim( $currencyFromUrl ) );
 			//参数获取cookie后  种cookie
 			if( in_array( $currency , $GLOBALS['currency_list'] ) ){
-				set_cookie('currencyTypeNew', $currency , 864000 );
+				OtherHelper::set_cookie('currencyTypeNew', $currency , 864000 );
 			}
 		}elseif($getCurrency !== false){
 			//此参数从cookie 获取  不需要大写转化 用户修改cookie
@@ -197,6 +184,7 @@ class EbController extends Controller {
 		}
 
 		$this->session->set('currency', strtoupper( trim( $currency ) ) );
+		
 		return $currency;
 	}
 
@@ -507,26 +495,27 @@ class EbController extends Controller {
 		$user = false;
 		if(!$this->m_app->checkUserLogin()){
 			//auto login
-			$user_id = $this->input->cookie('ECS[user_id]');
-			$user_name = $this->input->cookie('ECS[user_name]');
-			$password = $this->input->cookie('ECS[password]');
-
+			$user_id = OtherHelper::get_cookie('ECS[user_id]');
+			$user_name = OtherHelper::get_cookie('ECS[user_name]');
+			$password = OtherHelper::get_cookie('ECS[password]');
+			$user_name = 'grace';
 			if($user_id !== false && $user_name !== false && $password !== false){
-				if(is_email($user_name)){
-					$user = $this->UserModel->getUserByEmail($user_name);
+				$userModelObj = Users::getInstanceObj();
+				if( OtherHelper::is_email($user_name)){
+					$user = $userModelObj->getUserByEmail($user_name);
 				}else{
-					$user = $this->UserModel->getUserByName($user_name);
+					$user = $userModelObj->getUserByName($user_name);
 				}
 
-				if(!empty($user) && $user['user_id'] == $user_id && $this->UserModel->validatePassword($user['password'],$password)){
+				if(!empty($user) && $user['user_id'] == $user_id && $userModelObj->validatePassword($user['password'],$password)){
 					$this->session->set('user_id',$user['user_id']);
 					$this->session->set('user_name',$user['user_name']);
 					$this->session->set('email',$user['email']);
 					$this->UserModel->updateUserLoginInfo($user['user_id']);
 				}else{
-					unset_cookie('ECS[user_id]');
-					unset_cookie('ECS[user_name]');
-					unset_cookie('ECS[password]');
+					OtherHelper::unset_cookie('ECS[user_id]');
+					OtherHelper::unset_cookie('ECS[user_name]');
+					OtherHelper::unset_cookie('ECS[password]');
 				}
 			}
 		}
@@ -561,10 +550,10 @@ class EbController extends Controller {
 
 	protected function _setWebgainsCookie() {
 
-		$utm_medium = $this->input->get('utm_medium'); //平台
-		$utm_source = $this->input->get('utm_source'); //所属项目
-		$source = $this->input->get('source'); //获取佣金平台
-		$utm_campaign = $this->input->get('utm_campaign'); //网盟唯一标示id
+		$utm_medium =  Yii::$app->request->get('utm_medium'); //平台
+		$utm_source =  Yii::$app->request->get('utm_source'); //所属项目
+		$source =  Yii::$app->request->get('source'); //获取佣金平台
+		$utm_campaign =  Yii::$app->request->get('utm_campaign'); //网盟唯一标示id
 
 		if ( $utm_medium === false || $utm_source === false ) {
 			return false;
@@ -574,10 +563,10 @@ class EbController extends Controller {
 
 		//通过供应商决定cookie失效时间
 		global $c_webgains_sourcetotime;
-		$expiresTime = id2name($utm_campaign, $c_webgains_sourcetotime, 45*86400);
+		$expiresTime = OtherHelper::id2name($utm_campaign, $c_webgains_sourcetotime, 45*86400);
 
 		//设置网盟cookie
-		set_affiliate_cookie($source, $utm_medium, $utm_source , $utm_campaign , $expiresTime);
+		OtherHelper::set_affiliate_cookie($source, $utm_medium, $utm_source , $utm_campaign , $expiresTime);
 	}
 
 	//检测移动版
