@@ -24,7 +24,7 @@ class Session {
 	public function __construct(){
 		$this->_ip = $this->_getIP();
 		$params = Yii::$app->params;
-		$memcacheConfig = $params['eb_db_config']['memcache_config'];
+		$memcacheConfig = $params['system_config']['memcache_config'];
 		
 		$host_config = $memcacheConfig['memcache_session']['host'] ;
 		$port_config = $memcacheConfig['memcache_session']['port'] ; 

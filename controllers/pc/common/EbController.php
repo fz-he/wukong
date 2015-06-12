@@ -11,6 +11,9 @@ use app\libraries\Memcache;
 use app\libraries\Log;
 use app\models\Appmodel;
 use app\models\Users;
+use app\models\Banner;
+use app\models\Category;
+use app\models\Categorydesc;
 use app\components\helpers\ArrayHelper;
 use app\components\helpers\HelpOther;
 use app\components\helpers\HelpUrl;
@@ -39,9 +42,7 @@ class EbController extends Controller {
 	 * run before every request.
 	 * init db,language&currency etc.
 	 */
-	public function __construct(){ 
-		//parent::__construct();
-
+	public function  init(){
 		/*
 		 * basic settings
 		 */
@@ -55,7 +56,7 @@ class EbController extends Controller {
 		$this->m_app = new Appmodel;
 
 		$this->_view_data['language_code'] = $this->_resolveCurrentLanguage();
-		$this->_view_data['currency'] = $this->_resolveCurrentCurrency();
+		$this->_view_data['currency'] = $this->_resolveCurrentCurrency(); 
 
 		/*
 		 * head banner display
@@ -78,8 +79,8 @@ class EbController extends Controller {
 		$this->_fullSiteBanner();
 
 		//取出并创建分类树
-		$allCategoryMap = $this->_getMapCategory();
-		$this->_view_data['allCategoryMap'] = $allCategoryMap;
+		$allCategoryMap = $this->_getMapCategory(); 
+		$this->_view_data['allCategoryMap'] = $allCategoryMap; 
 	}
 
 	public function index( $templet = '' ){
@@ -148,7 +149,7 @@ class EbController extends Controller {
 	 * @author qcn+bryan
 	 */
 	protected function _fullSiteBanner() {
-		$this->_view_data['fullSiteBanner'] = BannerModel::getInstanceObj()->getAllSiteBanner( $this->m_app->currentLanguageId() );
+		$this->_view_data['fullSiteBanner'] = Banner::getInstanceObj()->getAllSiteBanner( $this->m_app->currentLanguageId() );
 	}
 
 	/*
@@ -224,7 +225,7 @@ class EbController extends Controller {
 			global $lang_basic_url;
 			$html_google_rel_list = array();
 			foreach($language_list as $record){
-				$html_google_rel_list[$record['common_code']] = id2name($record['code'],$lang_basic_url,BASIC_URL).uri_string();
+				$html_google_rel_list[$record['common_code']] = ArrayHelper::id2name($record['code'],$lang_basic_url,BASIC_URL).uri_string();
 			}
 			$this->_view_data['head']['html_google_rel'] = $html_google_rel_list;
 		}
@@ -244,7 +245,7 @@ class EbController extends Controller {
 			$languageCode = $this->m_app->currentLanguageCode();
 			foreach($language_list as $record){
 				if($record['code'] == $languageCode){
-					$html_google_rel_seo_list[$record['common_code']] = id2name($languageCode,$lang_basic_seo_url,BASIC_URL).uri_string();
+					$html_google_rel_seo_list[$record['common_code']] = ArrayHelper::id2name($languageCode,$lang_basic_seo_url,BASIC_URL).uri_string();
 				}
 			}
 			$this->_view_data['head']['html_google_rel_seo'] = $html_google_rel_seo_list;
@@ -253,7 +254,7 @@ class EbController extends Controller {
 		//header meta keywords
 		if(!isset($this->_view_data['head']['keywords_desc_domain'])){
 			global $lang_basic_url;
-			$url = id2name($language_code,$lang_basic_url,BASIC_URL);
+			$url = ArrayHelper::id2name($language_code,$lang_basic_url,BASIC_URL);
 			$url = str_replace('http://','',$url);
 			$url = trim($url,'/');
 			$this->_view_data['head']['keywords_desc_domain'] = COMMON_META_KEYWORDS.$url;
@@ -327,7 +328,7 @@ class EbController extends Controller {
 		global $language_list;
 		global $lang_basic_url;
 		foreach($language_list as $key => $record){
-			$language_list[$key]['url'] = rtrim(id2name($record['code'],$lang_basic_url,BASIC_URL),'/');
+			$language_list[$key]['url'] = rtrim(ArrayHelper::id2name($record['code'],$lang_basic_url,BASIC_URL),'/');
 		}
 		$this->_view_data['header']['language_list'] = $language_list;
 		$this->_view_data['header']['current_language_title'] = $language_list[$language_id]['title'];
@@ -391,7 +392,7 @@ class EbController extends Controller {
 		$tag_buffer = array();
 		foreach($tag_list as $record){
 			$word = explode(',',$record['tag_words']);
-			$word = id2name($language_id-1,$word,'');
+			$word = ArrayHelper::id2name($language_id-1,$word,'');
 			if($word != ''){
 				if($record['tag_url'] == ''){
 					$record['tag_url'] = eb_gen_url('search-keywords-'.eb_substr($word,20,false).'.html');
@@ -563,7 +564,7 @@ class EbController extends Controller {
 
 		//通过供应商决定cookie失效时间
 		global $c_webgains_sourcetotime;
-		$expiresTime = OtherHelper::id2name($utm_campaign, $c_webgains_sourcetotime, 45*86400);
+		$expiresTime = ArrayHelper::id2name($utm_campaign, $c_webgains_sourcetotime, 45*86400);
 
 		//设置网盟cookie
 		OtherHelper::set_affiliate_cookie($source, $utm_medium, $utm_source , $utm_campaign , $expiresTime);
@@ -613,27 +614,27 @@ class EbController extends Controller {
 	 * @return [type] [description]
 	 */
 	protected function _getMapCategory() {
-		$this->Categoryv2Model = new Categoryv2Model();
-		$this->CategorydescModel = new CategorydescModel();
+		$categoryModelObj =  Category::getInstanceObj();
+		$categorydescModelObj = Categorydesc::getInstanceObj();
 		$categoryLevel1 = array();
 		//获取所有的分类
-		$fieldArray = array('id', 'p_id', 'name', 'image', 'path', 'url', 'nav_image', 'nav_image_bg', 'nav_url', 'status', 'product_active_num');
-		$whereArray = array(
-			'status' => 1,
-			'product_active_num >' => '0',
-			'url !=' => '',
-			'id >'=>15000,
+		$fieldArray = array('id', 'p_id','name', 'image', 'path', 'url', 'nav_image', 'nav_image_bg', 'nav_url', 'status', 'product_active_num');
+		$whereArray = array( //注意这里的写法和以往不同了
+			'status' => '=1',
+			'product_active_num' => '>0',
+			'url' => '!=\'\'',
+			'id'=> ' >15000',
 		);
-		$orderBy = array('sort' => 'desc');
-		$categoryMapArray = $this->Categoryv2Model->getCategoryInfo( $fieldArray, $whereArray, $orderBy, $groupBy = '', array() );
+		$orderBy = ['sort' =>  SORT_DESC];//注意值是写成常量了
+		$categoryMapArray = $categoryModelObj->getCategoryInfo( $fieldArray, $whereArray, $orderBy, $groupBy = '', array() );
 
 		//取出分类的多语言
 		$fieldArray = array('category_id', 'name');
 		$whereArray = array(
-			'language_id' => $this->m_app->currentLanguageId(),
+			'language_id' => '='. $this->m_app->currentLanguageId() ,
 		);
-		$categoryNameArray = $this->CategorydescModel->getCategoryDescInfo($fieldArray, $whereArray, array(), $groupBy = '', array());
-		$categoryNameArray = reindexArray( $categoryNameArray , 'category_id' );
+		$categoryNameArray = $categorydescModelObj->getCategoryDescInfo($fieldArray, $whereArray, array(), $groupBy = '', array());
+		$categoryNameArray = ArrayHelper::reindexArray( $categoryNameArray , 'category_id' );
 
 		//将分类的多语言加入分类信息数组中
 		if(count($categoryMapArray) > 0) {
@@ -645,7 +646,7 @@ class EbController extends Controller {
 		}
 
 		//循环处理分类的树级
-		$categoryMapArray = reindexArray( $categoryMapArray , 'id' );
+		$categoryMapArray = ArrayHelper::reindexArray( $categoryMapArray , 'id' );
 
 		if(count($categoryMapArray) > 0) {
 			//处理一级分类

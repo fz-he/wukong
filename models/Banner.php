@@ -3,11 +3,13 @@
 namespace app\models;
 
 use app\models\common\EbARModel as baseModel;
+use app\components\helpers\HelpOther;
+use app\components\helpers\HelpUrl;
 
 /**
  * 全站banner  和通栏banner
 */
-class BannerModel extends baseModel {
+class Banner extends baseModel {
 	//全站通栏banner缓存
 	const MEM_KEY_ALL_SITE_BANNER = 'banner_all_site';//banner_all_site #全站banner mc key.
 	//分类通栏 banner缓存
@@ -23,7 +25,7 @@ class BannerModel extends baseModel {
 	const EXPIRE_TIME = 36000 ;
 	
 	private static $_instance = NULL;
-
+	private $table = 'banner';
 	/**
 	 * 获取全站BANNER
 	 * @param int $langId //语言ID
@@ -46,17 +48,18 @@ class BannerModel extends baseModel {
 		//获取缓存数据
 		$cacheKey = self::MEM_KEY_ALL_SITE_BANNER ;
 		$list = $this->memcache->get( $cacheKey, array() );
+
 		if( $list === false ) {
 			$formatENDTime = date( 'Y-m-d H:i:s' , ( $requestTime + self::EXPIRE_TIME ) );
-			$this->db_ebmaster_read->select('id,content,start_time,end_time');
-			$this->db_ebmaster_read->from('banner');
-			$this->db_ebmaster_read->where('type', self::TYPE_ALL_SITE );
-			$this->db_ebmaster_read->where('status', 1 );
-			$this->db_ebmaster_read->where('start_time <= ', $formatENDTime );
-			$this->db_ebmaster_read->where('end_time >', $formatRequestTime );
-			$this->db_ebmaster_read->order_by('end_time','asc');
-			$query = $this->db_ebmaster_read->get();
-			$result = $query->result_array();
+
+			$sql = 'SELECT id,content,start_time,end_time FROM '. $this->table . ' WHERE type= :type and status = 1 and  start_time <= :startTime'
+					. ' and end_time >  :endTime  order by end_time asc';
+			
+			$command =  $this->db_ebmaster_read->createCommand( $sql )
+			->bindValue(':type' ,self::TYPE_ALL_SITE)
+			->bindValue(':startTime' ,  $formatENDTime)
+			->bindValue(':endTime' , $formatRequestTime);
+			$result = $command->queryAll();
 
 			$list = array();
 			if( !empty( $result ) ){
@@ -276,5 +279,6 @@ class BannerModel extends baseModel {
 	 * 初始化的方法
 	 */
 	public function __construct() {
+		parent::__construct();
 	}
 }

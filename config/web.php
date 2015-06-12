@@ -9,6 +9,7 @@ $config = [
 	'language' => 'ru' ,
     'bootstrap' => ['log'],
 	'defaultRoute'=> 'pc/home/index',
+	//'controllerNamespace' => 'app\controllers',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -40,11 +41,15 @@ $config = [
                 ],
             ],
         ],
+		//@todo 有多数据库时 不知道怎么用AR操作相应的数据库
         'db' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_master'],
 		'eachbuyer_slave' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_slave'],
 		'eachbuyer_eb_master' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_eb_master'],
 		'eachbuyer_eb_slave' => $_SYSTEM_CONFIG['eb_db_config']['eachbuyer_eb_slave'],
 				
+		 'view' => [
+	      //  'class' => 'view\pc',
+        ],
 		'urlManager' => [       
 			'enablePrettyUrl' => true,
             'showScriptName'=>FALSE,

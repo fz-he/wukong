@@ -91,9 +91,16 @@ class Users extends EbARModel {
 		if(is_array($userName)) {
 			return false;
 		}
-		$customers = Users::find()
-		->where(['user_name' => $userName])->asArray()->one();	
-	var_dump($customers);die;
+//		@todo 多数据库时 AR 怎么处理才能选择我想操作的数据库？？？		
+//		$customers = Users::find()
+//		->where(['user_name' => $userName])->asArray()->one();	
+		
+//		$customers = (new \yii\db\Query())
+//			->where(['user_name' => $userName])
+//			->from('users') 
+//			->limit(1)
+//			->one();
+//		原生sql 不方便，后期维护也很麻烦
 		$sql = 'SELECT * FROM ' . $this->table . ' WHERE user_name=' . '\'' . $userName . '\'';
 		$command =  $this->db_write->createCommand( $sql );
 		$record = $command->queryOne();

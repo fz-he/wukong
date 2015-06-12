@@ -210,7 +210,7 @@ class Memcache {
 		$this->_memcache = new \stdClass();
 		/*Init the memcache obj.*/
 		$params = Yii::$app->params;
-		$memcacheConfig = $params['eb_db_config']['memcache_config'];
+		$memcacheConfig = $params['system_config']['memcache_config'];
 		
 		foreach ((array) $memcacheConfig as $memKey => $memItem) {
 			$this->_memcache->$memKey = new \Memcache;

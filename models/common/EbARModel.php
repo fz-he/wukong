@@ -27,7 +27,7 @@ class EbARModel extends ActiveRecord{
 		$this->db_write =  Yii::$app->db;
 		$this->db_read  = Yii::$app->eachbuyer_slave;
 		$this->db_ebmaster_write  = Yii::$app->eachbuyer_eb_master;
-		$this->db_ebmaster_read  = Yii::$app->eachbuyer_eb_master;
+		$this->db_ebmaster_read  = Yii::$app->eachbuyer_eb_slave;
 	
 		if(!$this->db_read->open()){
 			$this->db_read = $this->db_write;

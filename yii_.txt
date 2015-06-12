@@ -1,0 +1,27 @@
+ Yii::$app->request->get('currency');
+
+ $cookies = Yii::$app->request->cookies;
+$ip = $cookies->getValue('real_ipd');  
+
+
+$cookies = Yii::$app->response->cookies;
+// add a new cookie to the response to be sent
+$cookies->add(new \yii\web\Cookie([
+	'name' => 'real_ipd',
+	'value' => $ip,
+	'expire' => $_SERVER['REQUEST_TIME'] + 36000,
+	'domain' => COMMON_DOMAIN,
+	'path' => ArrayHelper::id2name('cookie_path',$GLOBALS,'/'),
+	'secure' => ArrayHelper::id2name('cookie_secure',$GLOBALS,false),
+]));
+
+
+
+	
+	
+echo Yii::t('buy', 'buy_description');
+echo Yii::t('account', 'account_dashboard_title');
+echo Yii::t('common', 'shot_message');die;
+
+
+

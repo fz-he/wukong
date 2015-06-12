@@ -4,6 +4,8 @@
  */
 namespace app\components\helpers;
 
+use Yii;
+
 class HelpUrl{
 	//链接配置
 	static $urlConfig = array();
@@ -11,8 +13,10 @@ class HelpUrl{
 	//读取配置文件
 	public static function initConfig() {
 		if( empty( self::$urlConfig ) ) {
-			global $_SYSTEM_CONFIG ;
-			self::$urlConfig = & $_SYSTEM_CONFIG;
+			$params = Yii::$app->params;
+			$_system_config = $params['system_config'];
+			
+			self::$urlConfig = & $_system_config;
 		}
 	}
 	/**

@@ -43,21 +43,54 @@
 				'password' => 'db01123456',
 				'charset' => 'utf8',
 			],
-			//memcache 配置文件
-			'memcache_config' => [
-					'memcache_web' => [
-							'host' => '172.16.0.230' ,
-							'port' => 11211 ,
-					],
-					'memcache_page' => [
-							'host' => '172.16.0.230' ,
-							'port' => 11311 ,
-					],
-					'memcache_session' => [
-							'host' => '172.16.0.230' ,
-							'port' => 11411 ,
-					],
-			],
+		],
+		//memcache 配置文件
+		'memcache_config' => [
+				'memcache_web' => [
+						'host' => '172.16.0.230' ,
+						'port' => 11211 ,
+				],
+				'memcache_page' => [
+						'host' => '172.16.0.230' ,
+						'port' => 11311 ,
+				],
+				'memcache_session' => [
+						'host' => '172.16.0.230' ,
+						'port' => 11411 ,
+				],
+		],
+		//http://pic.eachbuyer.com/350x350/x9/p100/xx018637_a.jpg  web_path :x9/p100/xx018637_a.jpg
+		'url_config' => [
+				'static_file_version' => 20141028102610 ,
+				'static_type' => 'source' , // ['source'/'compress']静态文件类型( source:源代码,compress: 压缩后)
+				'source' => array(
+						'img_url' => array(
+								'web_path'=>'img6.' . COMMON_DOMAIN .'/',
+						 ),
+						'img_site_url' => array(
+								'img6.' . COMMON_DOMAIN .'/',
+						),
+						'css' => array(
+								'url' => HOME_URL . '/css/',
+						),
+						'js' => array(
+								'url' => HOME_URL . '/js/',
+						),
+				) ,
+				'compress'=> array(
+						'img_url' => array(
+								'web_path'=>'img6.' . COMMON_DOMAIN .'/',
+						),
+						'img_site_url' => array(
+								'img6.' . COMMON_DOMAIN .'/',
+						),
+						'css' => array(
+								'url' => HOME_URL . '/compress/css/',
+						),
+						'js' => array(
+								'url' => HOME_URL . '/compress/js/',
+						),
+				) ,
 		],
 	];
 
