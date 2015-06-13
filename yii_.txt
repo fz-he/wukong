@@ -24,4 +24,46 @@ echo Yii::t('account', 'account_dashboard_title');
 echo Yii::t('common', 'shot_message');die;
 
 
+namespace app\models;
+
+use Yii;
+use app\models\common\EbARModel as baseModel;
+use app\components\helpers\ArrayHelper;
+use app\components\helpers\HelpOther;
+use app\components\helpers\HelpUrl;
+use app\components\helpers\OtherHelper;
+
+
+
+baseModel {
+		
+	private static $_tableName = 'comment';
+	private static $_instance = NULL;
+	
+	public function __construct() {
+		parent::__construct();
+	}
+	
+	public static function getInstanceObj( ){
+		if ( self::$_instance === NULL ){
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
+	
+	public static function getDb(){  
+        return Yii::$app->eachbuyer_eb_slave;
+    }
+	public static function tableName() {
+		return static::$_tableName;
+	}
+
+$query = static::find();
+$query->select(['image_ad_id' , 'image_ad_name']);
+if ( !empty ($missing_image_ad_ids) ){ //没有whereIN 类似的函数
+	$where = 'image_ad_id in (' . implode(',' ,$missing_image_ad_ids) . ')' ;
+	$query->where(  $where );
+}
+$query->groupBy('image_ad_id');
+$list = $query->asArray()->all(); 
 

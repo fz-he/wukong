@@ -556,7 +556,7 @@ class OtherHelper {
 		if (is_array($data)) {
 			$dataFormat = array();
 			foreach ($data as $k => $v) {
-				$dataFormat[$k] = eb_htmlspecialchars($v);
+				$dataFormat[$k] = self::eb_htmlspecialchars($v);
 			}
 		} else {
 			$dataFormat = htmlspecialchars($data, ENT_QUOTES);

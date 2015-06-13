@@ -53,6 +53,7 @@ AppAsset::register($this);
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
             <?= $content ?>
+			your beautiful 
         </div>
     </div>
 

@@ -1,15 +1,5 @@
 <?php
 
-//return [
-//    'class' => 'yii\db\Connection',
-//    'dsn' => 'mysql:host=172.16.0.231;dbname=eachbuyer;port=3306 ',
-//    'username' => 'root',
-//    'password' => 'db01123456',
-//    'charset' => 'utf8',
-//];
-
-
-
 	//DB mc static url 等系统配置集合
 	$_SYSTEM_CONFIG = [
 		//DB配置文件

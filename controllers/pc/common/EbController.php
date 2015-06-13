@@ -30,38 +30,41 @@ class EbController extends Controller {
 	public $memcache = NULL;
 	public $log = NULL;
 	public $m_app = NULL;
+	public $languageId = 1;
 
 	/*
 	 * data used by view
-	 * extract() when $this->load->view($this->router->class,$this->_view_data);
+	 * extract() when $this->load->view($this->router->class,$this->viewData);
 	 */
-	protected $_view_data = array();
+	protected $viewData = array();
 
 	/*
+	 * 不能有构造函数
 	 * constructer.
 	 * run before every request.
 	 * init db,language&currency etc.
 	 */
-	public function  init(){
+	public function  init(){ 
 		/*
 		 * basic settings
 		 */
 		@ini_set('memory_limit', '64M');
 		$current_page = strtolower(get_class($this));
-		$this->_view_data['current_page'] = $current_page;
-
+		$this->viewData['current_page'] = $current_page;
+		$this->layout = '@app/views/pc/layouts/main.html.php'; //指定布局文件
+		
 		$this->log =  Log::getInstance();
 		$this->memcache =  Memcache::getInstance();
 		$this->session =  Session::getInstance();
 		$this->m_app = new Appmodel;
 
-		$this->_view_data['language_code'] = $this->_resolveCurrentLanguage();
-		$this->_view_data['currency'] = $this->_resolveCurrentCurrency(); 
+		$this->viewData['language_code'] = $this->_resolveCurrentLanguage();
+		$this->viewData['currency'] = $this->_resolveCurrentCurrency(); 
 
 		/*
 		 * head banner display
 		 */
-		$this->_view_data['headBannerDisabled'] = false;
+		$this->viewData['headBannerDisabled'] = false;
 
 		/*
 		 * check user login & save user info into session
@@ -80,38 +83,41 @@ class EbController extends Controller {
 
 		//取出并创建分类树
 		$allCategoryMap = $this->_getMapCategory(); 
-		$this->_view_data['allCategoryMap'] = $allCategoryMap; 
+		$this->viewData['allCategoryMap'] = $allCategoryMap; 
 	}
-
-	public function index( $templet = '' ){
+	
+	
+	public function renderView( $templet = ''  ){
 		/*
-		 * get page head,header&footer data & save to $this->_view_data
+		 * get page head,header&footer data & save to $this->viewData
 		 */
-		$this->_addHeadData();
-		$this->_addHeaderData();
-		$this->_addFooterData();
+//		$this->_addHeadData();
+//		$this->_addHeaderData();
+//		$this->_addFooterData();
 
 		/*
 		 * close databases master&slave
 		 */
-		$this->db_read->close();
-		$this->db_write->close();
-		//抛到页面sql 使用情况
-		$this->_view_data['open_analysis_log_status'] = FALSE;
+//		$this->db_read->close();
+//		$this->db_write->close();
+//		//抛到页面sql 使用情况
+//		$this->viewData['open_analysis_log_status'] = FALSE;
 		// if( defined('OPEN_LOG_ANALYSIS') && OPEN_LOG_ANALYSIS === TRUE ){
-		// 	$this->_view_data['open_analysis_log_status'] = TRUE ;
-		// 	$this->_view_data['analysis_log'] = $GLOBALS['analysis_log'];
+		// 	$this->viewData['open_analysis_log_status'] = TRUE ;
+		// 	$this->viewData['analysis_log'] = $GLOBALS['analysis_log'];
 		// }
 
-		$this->_view_data['captchaInvalid'] = lang('p_captcha_invalid');
-		/*
-		 * render view
-		 */
-		if( empty( $templet ) ){
-			$this->load->view( strtolower(get_class($this)) , $this->_view_data );
-		}else {
-			$this->load->view( strtolower( $templet ) ,$this->_view_data);
-		}
+//		$this->viewData['captchaInvalid'] = lang('p_captcha_invalid');
+//		/*
+//		 * render view
+//		 */
+//		$curClass = $strtolower(get_class($this));
+//		if( empty( $templet ) ){
+//			parent::render(  $curClass . '.html.php' , $this->viewData );
+//		}else {
+//			parent::render( strtolower( $templet ) . '.html.php' ,$this->viewData);
+//		}
+		return $this->render( strtolower( $templet ) . '.html.php' , $this->viewData);
 	}
 
 	/*
@@ -149,7 +155,7 @@ class EbController extends Controller {
 	 * @author qcn+bryan
 	 */
 	protected function _fullSiteBanner() {
-		$this->_view_data['fullSiteBanner'] = Banner::getInstanceObj()->getAllSiteBanner( $this->m_app->currentLanguageId() );
+		$this->viewData['fullSiteBanner'] = Banner::getInstanceObj()->getAllSiteBanner( $this->m_app->currentLanguageId() );
 	}
 
 	/*
@@ -190,7 +196,7 @@ class EbController extends Controller {
 	}
 
 	/*
-	 * get page head data & save to $this->_view_data
+	 * get page head data & save to $this->viewData
 	 */
 	protected function _addHeadData(){
 		global $language_list;
@@ -198,7 +204,7 @@ class EbController extends Controller {
 		$language_code = $this->m_app->currentLanguageCode();
 
 		//header meta canonical
-		if(!isset($this->_view_data['head']['canonical'])){
+		if(!isset($this->viewData['head']['canonical'])){
 			$canonical = '';
 			if($_SERVER['REQUEST_URI'] && strpos($_SERVER['REQUEST_URI'],'?')!==false){
 				$canonical = $_SERVER['REQUEST_URI'];
@@ -206,32 +212,32 @@ class EbController extends Controller {
 				$canonical = eb_gen_url($canonical);
 				$canonical = "<link rel='canonical' href='{$canonical}' />";
 			}
-			$this->_view_data['head']['canonical'] = $canonical;
+			$this->viewData['head']['canonical'] = $canonical;
 		}
 
 		//header meta content-language
-		if(!isset($this->_view_data['head']['html_meta_lang'])){
+		if(!isset($this->viewData['head']['html_meta_lang'])){
 			if(isset($language_list[$language_id])){
 				$meta_lang = $language_list[$language_id]['common_code'];
 			}else{
 				$meta_lang = $language_list[1]['common_code'];
 			}
-			$this->_view_data['head']['html_meta_lang'] = '<meta http-equiv="content-language" content="' . $meta_lang .'" />';
+			$this->viewData['head']['html_meta_lang'] = '<meta http-equiv="content-language" content="' . $meta_lang .'" />';
 		}
 
 		//header meta alternate
-		if(!isset($this->_view_data['head']['html_google_rel']) && $this->router->class != 'atoz' && $this->router->class != 'buy'){
+		if(!isset($this->viewData['head']['html_google_rel']) && $this->router->class != 'atoz' && $this->router->class != 'buy'){
 			global $language_list;
 			global $lang_basic_url;
 			$html_google_rel_list = array();
 			foreach($language_list as $record){
 				$html_google_rel_list[$record['common_code']] = ArrayHelper::id2name($record['code'],$lang_basic_url,BASIC_URL).uri_string();
 			}
-			$this->_view_data['head']['html_google_rel'] = $html_google_rel_list;
+			$this->viewData['head']['html_google_rel'] = $html_google_rel_list;
 		}
 
 		//SEO优化
-		if(!isset($this->_view_data['head']['html_google_rel_seo']) && $this->router->class != 'atoz' && $this->router->class != 'buy'){
+		if(!isset($this->viewData['head']['html_google_rel_seo']) && $this->router->class != 'atoz' && $this->router->class != 'buy'){
 			$lang_basic_seo_url = array(
 									'us' => 'http://m.eachbuyer.com/',
 									'de' => 'http://m.eachbuyer.com/de/',
@@ -248,23 +254,23 @@ class EbController extends Controller {
 					$html_google_rel_seo_list[$record['common_code']] = ArrayHelper::id2name($languageCode,$lang_basic_seo_url,BASIC_URL).uri_string();
 				}
 			}
-			$this->_view_data['head']['html_google_rel_seo'] = $html_google_rel_seo_list;
+			$this->viewData['head']['html_google_rel_seo'] = $html_google_rel_seo_list;
 		}
 
 		//header meta keywords
-		if(!isset($this->_view_data['head']['keywords_desc_domain'])){
+		if(!isset($this->viewData['head']['keywords_desc_domain'])){
 			global $lang_basic_url;
 			$url = ArrayHelper::id2name($language_code,$lang_basic_url,BASIC_URL);
 			$url = str_replace('http://','',$url);
 			$url = trim($url,'/');
-			$this->_view_data['head']['keywords_desc_domain'] = COMMON_META_KEYWORDS.$url;
+			$this->viewData['head']['keywords_desc_domain'] = COMMON_META_KEYWORDS.$url;
 		}
 		//page keywords/desc/title/ga
 		$this->_addPageHeadData();
 	}
 
 	/*
-	 * get page head data & save to $this->_view_data
+	 * get page head data & save to $this->viewData
 	 * vary when different page loaded
 	 */
 	protected function _addPageHeadData(){
@@ -272,54 +278,54 @@ class EbController extends Controller {
 		$language_id = $this->m_app->currentLanguageId();
 
 		if($current_page == 'home'){
-			$this->_view_data['head']['ga_ecomm_pagetype'] = "'home'";
+			$this->viewData['head']['ga_ecomm_pagetype'] = "'home'";
 		}elseif($current_page == 'page_not_found'){
-			$this->_view_data['head']['keywords'] = 'Error Page Not Found';
-			$this->_view_data['head']['description'] = 'The page you requested was not found or its name had changed, this page is unavailable temporarily.';
-			$this->_view_data['head']['title'] = 'Error Page Not Found.';
-			$this->_view_data['head']['ga_ecomm_pagetype'] = "'other'";
+			$this->viewData['head']['keywords'] = 'Error Page Not Found';
+			$this->viewData['head']['description'] = 'The page you requested was not found or its name had changed, this page is unavailable temporarily.';
+			$this->viewData['head']['title'] = 'Error Page Not Found.';
+			$this->viewData['head']['ga_ecomm_pagetype'] = "'other'";
 		}
 
 		//default
 		$config = false;
-		if(!isset($this->_view_data['head']['keywords'])){
+		if(!isset($this->viewData['head']['keywords'])){
 			if($config === false) $config = $this->m_app->getAllConfig();
 			if(!empty($config['shop_keywords_'.$language_id])){
-				$this->_view_data['head']['keywords'] = htmlspecialchars($config['shop_keywords_'.$language_id]);
+				$this->viewData['head']['keywords'] = htmlspecialchars($config['shop_keywords_'.$language_id]);
 			}elseif(!empty($config['shop_keywords'])){
-				$this->_view_data['head']['keywords'] = htmlspecialchars($config['shop_keywords']);
+				$this->viewData['head']['keywords'] = htmlspecialchars($config['shop_keywords']);
 			}else{
-				$this->_view_data['head']['keywords'] = '';
+				$this->viewData['head']['keywords'] = '';
 			}
 		}
-		if(!isset($this->_view_data['head']['description'])){
+		if(!isset($this->viewData['head']['description'])){
 			if($config === false) $config = $this->m_app->getAllConfig();
 			if(!empty($config['shop_desc_'.$language_id])){
-				$this->_view_data['head']['description'] = htmlspecialchars($config['shop_desc_'.$language_id]);
+				$this->viewData['head']['description'] = htmlspecialchars($config['shop_desc_'.$language_id]);
 			}elseif(!empty($config['shop_desc'])){
-				$this->_view_data['head']['description'] = htmlspecialchars($config['shop_desc']);
+				$this->viewData['head']['description'] = htmlspecialchars($config['shop_desc']);
 			}else{
-				$this->_view_data['head']['description'] = '';
+				$this->viewData['head']['description'] = '';
 			}
 		}
-		if(!isset($this->_view_data['head']['title'])){
+		if(!isset($this->viewData['head']['title'])){
 			if($config === false) $config = $this->m_app->getAllConfig();
 			if(!empty($config['shop_title_'.$language_id])){
-				$this->_view_data['head']['title'] = htmlspecialchars($config['shop_title_'.$language_id]);
+				$this->viewData['head']['title'] = htmlspecialchars($config['shop_title_'.$language_id]);
 			}elseif(!empty($config['shop_title'])){
-				$this->_view_data['head']['title'] = htmlspecialchars($config['shop_title']);
+				$this->viewData['head']['title'] = htmlspecialchars($config['shop_title']);
 			}else{
-				$this->_view_data['head']['title'] = '';
+				$this->viewData['head']['title'] = '';
 			}
 		}
 
-		if(!isset($this->_view_data['head']['ga_ecomm_pagetype'])){
-			$this->_view_data['head']['ga_ecomm_pagetype'] = "'other'";
+		if(!isset($this->viewData['head']['ga_ecomm_pagetype'])){
+			$this->viewData['head']['ga_ecomm_pagetype'] = "'other'";
 		}
 	}
 
 	/*
-	 * get page header data & save to $this->_view_data
+	 * get page header data & save to $this->viewData
 	 */
 	protected function _addHeaderData(){
 		$language_id = $this->m_app->currentLanguageId();
@@ -330,15 +336,15 @@ class EbController extends Controller {
 		foreach($language_list as $key => $record){
 			$language_list[$key]['url'] = rtrim(ArrayHelper::id2name($record['code'],$lang_basic_url,BASIC_URL),'/');
 		}
-		$this->_view_data['header']['language_list'] = $language_list;
-		$this->_view_data['header']['current_language_title'] = $language_list[$language_id]['title'];
+		$this->viewData['header']['language_list'] = $language_list;
+		$this->viewData['header']['current_language_title'] = $language_list[$language_id]['title'];
 
 		//currency_list
-		$this->_view_data['header']['currency_list'] = $GLOBALS['currency_list'];
+		$this->viewData['header']['currency_list'] = $GLOBALS['currency_list'];
 
 		//image ad list
 		$this->load->model('Imageadmodel','m_imagead');
-		$this->_view_data['header']['image_ad'] = $this->m_imagead->getImageAdList(14,$language_id);
+		$this->viewData['header']['image_ad'] = $this->m_imagead->getImageAdList(14,$language_id);
 
 		//category tree
 		$this->CategoryModel = new CategoryModel();
@@ -346,7 +352,7 @@ class EbController extends Controller {
 		$list = $this->Categoryv2Model->getShownCategory($language_id);
 		$list = spreadArray($list,'p_id');
 		$list = $this->_buildList($list);
-		$this->_view_data['header']['category_list'] = $list;
+		$this->viewData['header']['category_list'] = $list;
 
 		//keyword recommend
 		$this->KeywordrecommendModel = new KeywordrecommendModel();
@@ -369,14 +375,14 @@ class EbController extends Controller {
 				break;
 			}
 		}
-		$this->_view_data['header']['keyword_recommend_list'] = array_values($keyword_recommend_list_buffer);
+		$this->viewData['header']['keyword_recommend_list'] = array_values($keyword_recommend_list_buffer);
 
 		//cart
 		$this->_addCartInfo();
 	}
 
 	/*
-	 * get page footer data & save to $this->_view_data
+	 * get page footer data & save to $this->viewData
 	 */
 	protected function _addFooterData(){
 		$language_id = $this->m_app->currentLanguageId();
@@ -384,7 +390,7 @@ class EbController extends Controller {
 
 		//a to z
 		$this->KeywordrecommendModel = new KeywordrecommendModel();
-		$this->_view_data['footer']['atoz_list'] = $this->KeywordrecommendModel->getAtozList($language_code);
+		$this->viewData['footer']['atoz_list'] = $this->KeywordrecommendModel->getAtozList($language_code);
 
 		//tag
 		$this->load->model('Tagmodel','m_tag');
@@ -405,10 +411,10 @@ class EbController extends Controller {
 				if(count($tag_buffer)>30) break;
 			}
 		}
-		$this->_view_data['footer']['tag_list'] = $tag_buffer;
+		$this->viewData['footer']['tag_list'] = $tag_buffer;
 
 		//common language code
-		$this->_view_data['footer']['common_language_code'] = $GLOBALS['language_list'][$language_id]['common_code'];
+		$this->viewData['footer']['common_language_code'] = $GLOBALS['language_list'][$language_id]['common_code'];
 	}
 
 	protected function _buildCategoryTreeIndex($category_tree){
@@ -528,25 +534,25 @@ class EbController extends Controller {
 				'email' => $this->m_app->getCurrentUserEmail(),
 			);
 		}
-		$this->_view_data['user'] = $user;
+		$this->viewData['user'] = $user;
 	}
 
 	protected function _addMessageInfo($key){
-		$this->_view_data['message_flg'] = $this->session->get($key.'_flag');
-		$this->_view_data['message'] = $this->session->get($key);
+		$this->viewData['message_flg'] = $this->session->get($key.'_flag');
+		$this->viewData['message'] = $this->session->get($key);
 		$this->session->delete($key.'_flag');
 		$this->session->delete($key);
 	}
 
 	protected function _addCartInfo(){
-		if(isset($this->_view_data['flg_header_cart_disable']) && $this->_view_data['flg_header_cart_disable'] === true){
+		if(isset($this->viewData['flg_header_cart_disable']) && $this->viewData['flg_header_cart_disable'] === true){
 			return;
 		}
 
 		if(is_spider()){
 			return;
 		}
-		$this->_view_data['header_cart'] = $this->_getUserCartInfo();
+		$this->viewData['header_cart'] = $this->_getUserCartInfo();
 	}
 
 	protected function _setWebgainsCookie() {
@@ -575,9 +581,9 @@ class EbController extends Controller {
 		$is_mobile_device = FALSE ;
 		if( defined( 'CHECK_MOBILE_DEVICE' ) && CHECK_MOBILE_DEVICE === TRUE ){
 			if( $is_access_pc ){
-				set_cookie('mobile_is_access_pc', $is_access_pc, 864000 );
+				OtherHelper::set_cookie('mobile_is_access_pc', $is_access_pc, 864000 );
 			}else{
-				$is_mobile_device_get = $this->input->cookie('mobile_is_access_pc' );
+				$is_mobile_device_get = OtherHelper::get_cookie('mobile_is_access_pc' );
 				if( ! $is_mobile_device_get ){
 					$http_user_agent = empty($_SERVER['HTTP_USER_AGENT']) ? '' : strtolower($_SERVER['HTTP_USER_AGENT']) ;
 					$is_mobile_device = ( strpos ( $http_user_agent , 'pad') !== FALSE ) ? FALSE : strpos ( $http_user_agent , 'obile');
@@ -798,7 +804,7 @@ class EbController extends Controller {
 	 */
 	protected function dataLayerPushShopping( $cart = array() ){
 		if ( empty ( $cart ) ){
-			$this->_view_data['dataLayerProducts'] = '';
+			$this->viewData['dataLayerProducts'] = '';
 			return ;
 		}
 
@@ -826,7 +832,7 @@ class EbController extends Controller {
 			}
 		}
 
-		$this->_view_data['dataLayerProducts'] = json_encode( $products ); 
+		$this->viewData['dataLayerProducts'] = json_encode( $products ); 
 	}
 
 	/**
@@ -835,7 +841,7 @@ class EbController extends Controller {
 	 */
 	protected function dataLayerPushImpressions(  $productList = array() , $list = ''  ){
 		if ( empty ( $productList  ) ){
-		   $this->_view_data['dataLayerProducts'] = '';
+		   $this->viewData['dataLayerProducts'] = '';
 		   return ;
 		}
 		$position = 1;
@@ -849,7 +855,7 @@ class EbController extends Controller {
 		   );				
 	   }
 
-	   $this->_view_data['dataLayerProducts'] = json_encode( $products ); 
+	   $this->viewData['dataLayerProducts'] = json_encode( $products ); 
 	}
 }
 

@@ -6,6 +6,7 @@ defined('YII_ENV') or define('YII_ENV', 'dev');
 
 //@todo 这里引入配置文件，不知道YII里要怎么引入才好
 require(__DIR__ . '/../config/config_application.php');
+require(__DIR__ . '/../config/config_application_app.php');
 require(__DIR__ . '/../config/config_redirect_products.php');
 require(__DIR__ . '/../config/config_site.php');
 
