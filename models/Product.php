@@ -6,6 +6,7 @@ use Yii;
 use app\models\Promote;
 use app\models\Review;
 use app\models\common\EbARModel as baseModel;
+use app\models\Appmodel;
 use app\components\helpers\HelpOther;
 use app\components\helpers\HelpUrl;
 use app\components\helpers\ArrayHelper;
@@ -32,7 +33,7 @@ class Product extends baseModel {
 	const MEM_KEY_PRO_ACTIVE_STATUS = 'proActive%s';//proActive{$pid} #Product active status mc key.
 	const SIZE_CHART_LINE_LIMIT = 6;//尺码表列数限制个数
 	
-	private static $_tableName = 'image_ad_list';
+	private static $_tableName = 'product';
 	private static $_instance = NULL;
 
 	public function __construct() {
@@ -243,7 +244,7 @@ class Product extends baseModel {
 			foreach($skuAttrArr as $attrId=>$arrtVal){
 				if (!isset($mergedAttrArr[$attrId])) {
 					$attrTitle = current($this->getComplexAttrTitle($attrId, array($lanId)));
-					$mergedAttrArr[$attrId]['title'] = eb_htmlspecialchars($attrTitle);
+					$mergedAttrArr[$attrId]['title'] = OtherHelper::eb_htmlspecialchars($attrTitle);
 				}
 				$mergedAttrArr[$attrId]['vals'][$arrtVal['attrValId']] = array('text'=>$arrtVal['attrValTitle']);
 			}
@@ -908,7 +909,7 @@ class Product extends baseModel {
 	 * 获取pid下sku的属性值（多语言） @todo  需要优化 缓存查询数据库
 	 * @param int||array $pids
 	 * @param array $params （多语言参数）
-	 * @param boolean $cache （是否缓存）
+	 * @param boolean $cache （是否缓存） TRUE
 	 * @return array
 	 * @author Terry Lu
 	 */
@@ -946,10 +947,11 @@ class Product extends baseModel {
 						
 						//$attrValTitleLanRow = $this->db_ebmaster_read->select('title')->from('complexattr_value_lang')->where('complexattr_value_id', $complexAttrRow['id'])->where('language_id', $params[0])->get()->row();
 						if(!empty($attrValTitleLanRow)){
-							$complexAttrRow['title'] = $attrValTitleLanRow->title;
+							//$complexAttrRow['title'] = $attrValTitleLanRow->title;
+							$complexAttrRow['title'] = $attrValTitleLanRow['title'];
 						}
 						$return[$pid][$sku][$complexAttrRow['complexattr_id']]['attrValId'] = $complexAttrRow['id'];
-						$return[$pid][$sku][$complexAttrRow['complexattr_id']]['attrValTitle'] = eb_htmlspecialchars($complexAttrRow['title']);
+						$return[$pid][$sku][$complexAttrRow['complexattr_id']]['attrValTitle'] = OtherHelper::eb_htmlspecialchars($complexAttrRow['title']);
 					}
 				}
 			}
@@ -970,16 +972,30 @@ class Product extends baseModel {
 			$return = $this->memcache->ebMcFetchData($attrIds,self::MEM_KEY_PRO_ATTR_TITLE,array($this,'getComplexAttrTitle'),$params);
 		} else {
 			$return = array();
-			$query = $this->db_ebmaster_read->select('complexattr_id,title')->from('complexattr_lang')->where_in('complexattr_id', $attrIds)->where('language_id', $params[0])->get();
-			$resultArray = $query?$query->result_array():array();
+			//$query = $this->db_ebmaster_read->select('complexattr_id,title')->from('complexattr_lang')->where_in('complexattr_id', $attrIds)->where('language_id', $params[0])->get();
+			//$resultArray = $query?$query->result_array():array();
+			$query = self::find();
+			$query->select(['complexattr_id' , 'title'])->from('complexattr_lang');
+			if ( !empty ($attrIds) ){ //没有whereIN 类似的函数
+				$where = 'complexattr_id in (' . implode(',' ,$attrIds) . ')' ;
+				$query->where(  $where );
+			}
+			$query->andWhere( ['language_id' => $params[0] ] );
+			$resultArray = $query->asArray()->all(); 
+			$resultArray = empty( $resultArray )? []: $resultArray;
+			
 			$arrIdToTitle = array();
 			foreach($resultArray as $res){
 				$arrIdToTitle[$res['complexattr_id']] = $res['title'];
 			}
 			foreach($attrIds as $attrId){
 				if(!isset($arrIdToTitle[$attrId])){
-					$defaultTitleRes = $this->db_ebmaster_read->select('title')->from('complexattr')->where('id', $attrId)->get()->row();
-					$arrIdToTitle[$attrId] = empty($defaultTitleRes)?'':$defaultTitleRes->title;
+					//$defaultTitleRes = $this->db_ebmaster_read->select('title')->from('complexattr')->where('id', $attrId)->get()->row();
+					//$arrIdToTitle[$attrId] = empty($defaultTitleRes)?'':$defaultTitleRes->title;
+					$query = self::find()->select( 'title' )->from('complexattr');
+					$query->where( ['id' => $attrId ] );
+					$defaultTitleRes = $query->asArray()->one(); 
+					$arrIdToTitle[$attrId] = empty( $defaultTitleRes )? '' : $defaultTitleRes['title'];
 				}
 				$return[$attrId] = $arrIdToTitle[$attrId];
 			}
@@ -1086,7 +1102,8 @@ class Product extends baseModel {
 
 		//判断是否执行定时任务
 		if( empty( $isScriptTask ) ){
-			$currency = $this->m_app->currentCurrency();
+			$appModelObj = Appmodel::getInstanceObj();
+			$currency = $appModelObj->currentCurrency();
 		}else{
 			$currency = DEFAULT_CURRENCY;
 		}
@@ -1331,7 +1348,7 @@ class Product extends baseModel {
 			$sql = 'SELECT * FROM  special_goods_recommend_info  ';
 			$command =  $this->db_read->createCommand( $sql );
 			$list = $command->queryAll();
-			var_dump($list);die;
+
 			$categoryObj = Category::getInstanceObj();
 			$productList = array();
 			foreach($list as $record){
@@ -1394,10 +1411,14 @@ class Product extends baseModel {
 		$cacheParams = array($languageId);
 		$modelSkuList = $this->memcache->get( $cacheKey, $cacheParams );
 		if( $modelSkuList === false ){
-			$this->db_read->from('new_goods_recommend_info');
-			$query = $this->db_read->get();
-			$list = $query->result_array();
-			$categoryObj = new Categoryv2Model();
+//			$this->db_read->from('new_goods_recommend_info');
+//			$query = $this->db_read->get();
+//			$list = $query->result_array();
+			
+			$sql = 'SELECT * FROM new_goods_recommend_info';
+			$command =  $this->db_read->createCommand( $sql );
+			$list = $command->queryAll();			
+			$categoryObj =  Category::getInstanceObj();
 
 			$modelSkuList = array();
 			foreach($list as $record){
@@ -1416,7 +1437,7 @@ class Product extends baseModel {
 				}
 				$lackPidCount = 10 - count($proInfoList);
 				if($lackPidCount > 0){
-					$pids = extractColumn( $proInfoList, 'id' );
+					$pids = ArrayHelper::extractColumn( $proInfoList, 'id' );
 					$sort = '1';
 					if($record['complement'] == 1){ //促销
 						$sort = '1';
@@ -2351,8 +2372,9 @@ class Product extends baseModel {
 			$OrderModel = new OrderModel();
 			$orderList = array();
 			if( empty( $isScriptTask ) ){
-				if( $this->m_app->checkUserLogin() ){
-					list( $orderList ) = $OrderModel->getOrderList( $this->m_app->getCurrentUserId(), 1 );
+				$appModelObj = Appmodel::getInstanceObj();
+				if( $appModelObj->checkUserLogin() ){
+					list( $orderList ) = $OrderModel->getOrderList( $appModelObj->getCurrentUserId(), 1 );
 				}
 			}else{
 				list( $orderList ) = $OrderModel->getOrderList( $userId, 1 );

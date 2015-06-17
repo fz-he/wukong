@@ -67,3 +67,9 @@ if ( !empty ($missing_image_ad_ids) ){ //没有whereIN 类似的函数
 $query->groupBy('image_ad_id');
 $list = $query->asArray()->all(); 
 
+
+$sql = 'SELECT * FROM new_goods_recommend_desc WHERE language_id = :languageId limit 1';
+$command =  $this->db_read->createCommand( $sql );
+$command->bindValue(':languageId', $languageId);
+$record = $command->queryOne();
+

@@ -78,7 +78,7 @@ class HomeController extends BaseController
 					$row_length += $keyword_length;
 				}
 			}
-		}
+		} 
 		$this->viewData['category_keyword_recommend_list'] = $list;
 
 		//special deals
@@ -88,10 +88,10 @@ class HomeController extends BaseController
 		$this->viewData['special_goods_recommend_list'] = $this->_buildProductList( $list );
 
 		//new arrival
-		$this->viewData['new_goods_recommend_tab'] = $goodsModel->getNewGoodsRecommendTabTitle( $this->languageId );
+		$this->viewData['new_goods_recommend_tab'] = $goodsModelOjb->getNewGoodsRecommendTabTitle( $this->languageId );
 		$list = $productModelObj->getRecommendGoodsNewList( $this->languageId );
 		$this->viewData['new_goods_recommend_list'] = $this->_buildProductList( $list );
-		
+
 		$this->dataLayerPushImpressions($this->viewData['special_goods_recommend_list'] , $this->viewData['new_goods_recommend_list'] , 'Home Page' );
 
 		//header category droplist
@@ -188,20 +188,21 @@ class HomeController extends BaseController
 		$productListArray = array();
 		if( count( $productRecommendList ) > 0 ) {
 			foreach( $productRecommendList as $model_id => $pid_list ){
-				$pids = extractColumn( $pid_list, 'id' );
+				$pids = ArrayHelper::extractColumn( $pid_list, 'id' );
+				$productModelObj = Product::getInstanceObj();
 				$productList = $productModelObj->getProInfoById( $pids, $this->languageId, 1 );
 				foreach($productList as $key => $record){
 					$record['name'] = $record['name'];//商品的名称
 					$orig_desc = isset($record['content'])?strip_tags($record['content']):''; //商品描述
-					$record['goods_desc'] = eb_substr($orig_desc,160); //商品简介
+					$record['goods_desc'] = OtherHelper::eb_substr($orig_desc,160); //商品简介
 					$record['goods_img'] =  HelpUrl::img($record['image'] , 170 ); //分类页面商品的默认图
 					$record['countdown_time'] = ''; //倒计时
 					$record['flg_promote'] = false;
 					//warehouse
 					//$record['flgShowOrderTo'] = empty( $record['warehouse'] ) ? false : in_array( $record['warehouse'], AppConfig::$warehouse_oversea );
 					//商品的价格处理
-					$record['formatPrice'] = formatPrice($record['market_price']); //市场价格
-					$record['formatShopPrice'] = formatPrice($record['price']); //默认销售价格
+					$record['formatPrice'] = OtherHelper::formatPrice($record['market_price']); //市场价格
+					$record['formatShopPrice'] = OtherHelper::formatPrice($record['price']); //默认销售价格
 					$record['is_foreshow'] = false;
 					$record['discount'] = $record['format_promote_discount'];//折扣
 					//分类列表页面中1是折扣对应的数据数组的键值是1
@@ -209,7 +210,7 @@ class HomeController extends BaseController
 					//别的都是正常
 					if( ($record['promote_type'] == 1 || $record['promote_type'] == 32 || $record['promote_type'] == 33) && count($record['promote_info']) > 0 ) {
 						$record['flg_promote'] = true;
-						$record['formatShopPrice'] = formatPrice($record['final_price']); //默认销售价格
+						$record['formatShopPrice'] = OtherHelper::formatPrice($record['final_price']); //默认销售价格
 
 						if($record['promote_type'] == 1) {
 							//折扣

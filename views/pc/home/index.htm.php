@@ -7,12 +7,12 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\RoleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Roles';
+$this->title = 'Home page';
 $this->params['breadcrumbs'][] = $this->title;
-$this->registerMetaTag(['name' => 'keywords', 'content' => 'yii, framework, php']);
 ?>
 <div class="role-index">
 
-home page not success
+<?= Html::encode($homePage )?>
+<?= var_dump( $new_goods_recommend_list )?>
 
 </div>

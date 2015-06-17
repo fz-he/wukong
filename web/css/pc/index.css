@@ -1,0 +1,68 @@
+/*Copyright (c) 2014, eachbuyer.com.
+author: zhuzhengwei
+create date: 2014/5/10
+modified date: 2014/6/9
+description: 首页
+*/
+
+
+/* 背景图 */
+.top_brands .button_slider_prev span,.top_brands .button_slider_next span{background: url(../../images/common/sprites/sprites3.png?v=20141108) no-repeat;display: inline-block;}
+
+/* 广告 */
+.index_center_chuxiao{width: 100%; height: 110px; overflow: hidden; display: block; text-align: center;}
+.index_center_chuxiao img{ height: 100%;}
+
+/* 焦点图 */
+.focus_imgs{height:350px; position: relative;}
+.focus_l{position:relative;z-index:10; background-color: #fff;width:750px; font-size:0;}
+.focus_l,.focus_l_content,.focus_r{height:100%;}
+.focus_l_content{width:100%;}
+.focus_l_t{height:265px; margin-bottom:6px;}
+
+.focus_r{height:348px;width:21.9%; overflow: hidden; padding: 1px; background-color: #e6e6e6}
+.focus_r a{height:100%;display: block; line-height: 0; font-size: 0}
+.focus_r a img{width:100%; height: 100%; vertical-align: top;}
+
+.focus_l_b{/**padding-left:1px; ie6 && ie7 hack*/}
+.focus_l_b li.first{padding-left:0;}
+.focus_l_b li{float:left;height:78px; width:183px; padding-left: 6px;/* ie6 && ie7 hack*/}
+.focus_l_b li a{display:block; height:100%; overflow:hidden; font-size: 0;}
+.focus_l_b img{width:100%; height:100%;}
+
+/* 分类索引 */
+.cate_index{width:100%;}
+.cate_index .li{width:46.5%; overflow: hidden;border-bottom: 1px #ddd solid; padding: 5px; margin-bottom: 10px;}
+.cate_index .title .more{right:10px; top:0; line-height: 22px;}
+.cate_index .index_sub_list{width: 100%; overflow: hidden;}
+.index_sub_list dl{width:200%;height: 22px; line-height: 22px;}
+.index_sub_list dt{color:#2D72CC;}
+.index_sub_list dd a{padding:1px 3px;}
+.index_sub_list dd a:hover{background-color: #73AEDD; color: #fff; text-decoration: none;}
+.cate_index .li:hover{background-color: #F6FCFF}
+
+
+/* 商品列表 */
+.index_pro_list{position: relative;height: 635px; width: 100%; background-color: #fff;}
+.index_pro_list ul{display: none; position: absolute;left: 0; top: 0; width: 100%; height: 100%;}
+.index_pro_list .current{display: block;}
+
+
+/* 品牌推荐 */
+.top_brands{position: relative; left: 0;}
+.top_brands .title{border-bottom: 1px #000 solid;height: 30px; background-color:#fff;}
+.top_brands .more{background-color: #333; color: #fff; padding:0 5px; height: 20px; line-height: 20px; display: block;overflow: hidden; right:0; top:10px;}
+.top_brands .ec_slider{height:50px; width: 910px; margin:0 auto; font-size: 0}
+.top_brands .button_slider_prev,
+.top_brands .button_slider_next{margin-top:-7px; top:0; width: 30px; height: 60px;}
+.top_brands .button_slider_prev{left:-35px; }
+.top_brands .button_slider_next{right:-35px;}
+.top_brands .ec_slider_left .button_slider_prev span{background-position: left -165px; width: 100%; height: 100%;cursor: pointer;}
+.top_brands .ec_slider_left .button_slider_next span{ background-position: -45px -165px; width: 100%; height: 100%; cursor: pointer;}
+.top_brands .ec_slider_left .button_slider_prev:hover,
+.top_brands .ec_slider_left .button_slider_next:hover{background:none;opacity: 0.5; filter:alpha(opacity:50);}
+
+
+.top_brands li a{ width: 133px; height: 48px; display: block; float: left; margin: 0 8px; border: 1px #ddd solid}
+.top_brands li img{width: 100%; height: 100%;}
+

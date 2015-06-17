@@ -1,9 +1,22 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+namespace app\models;
+
+use Yii;
+use app\models\common\EbARModel as baseModel;
+use app\models\Appmodel;
+use app\models\Product;
+use app\models\Coupon;
+use app\models\Point;
+use app\components\helpers\HelpOther;
+use app\components\helpers\HelpUrl;
+use app\components\helpers\ArrayHelper;
+use app\components\helpers\OtherHelper;
 
 /**
  * 购物车
  */
-class CartModel extends CI_Model {
+class Cart extends baseModel {
 
 	const CART_GOODS_TYPE_NORMAL = 0;
 	const CART_GOODS_TYPE_GIFT = 55555 ;
@@ -85,8 +98,15 @@ class CartModel extends CI_Model {
 	protected $_markMergeCart = FALSE;
 
 	//初始化对象
+	protected $m_address ;
+	protected $m_app ;
 	protected $_objUserModel ;
 	protected $_objCouponModel ;
+	protected $_objProductModel ;
+	protected $_objPointModel ;
+	
+	private static $_tableName = 'cart';
+	private static $_instance = NULL;
 	/**
 	 * 加载购物车底层的时候初始化的方法
 	 */
@@ -95,13 +115,13 @@ class CartModel extends CI_Model {
 		parent::__construct();
 
 		//初始化models
-		$this->load->model('Appmodel','m_app');
-		$this->load->model('Addressmodel','m_address');
+		$this->m_app = Appmodel::getInstanceObj();
+		$this->m_address = Address::getInstanceObj();
 
-		$this->_objUserModel = new UserModel();
-		$this->_objProductModel = new ProductModel();
-		$this->_objCouponModel = CouponModel::getInstanceObj();
-		$this->_objPointModel = PointModel::getInstanceObj();
+		$this->_objUserModel =  User::getInstanceOjb();
+		$this->_objProductModel = Product::getInstanceObj();
+		$this->_objCouponModel = Coupon::getInstanceObj();
+		$this->_objPointModel = Point::getInstanceObj();
 
 		//初始化环境信息
 		$this->_initEnvironmentInfo();
@@ -125,13 +145,20 @@ class CartModel extends CI_Model {
 		$this->load->module('payment');
 	}
 
-	/**
-	 * 获取实例化
-	 * @return CartModel
-	 */
-	public static function & getInstanceObj( ){
-		return parent::_getBaseInstanceObj( __CLASS__ );
+	public static function getInstanceObj( ){
+		if ( self::$_instance === NULL ){
+			self::$_instance = new self();
+		}
+		return self::$_instance;
 	}
+	
+	public static function getDb(){  
+        return Yii::$app->eachbuyer_eb_slave;
+    }
+	
+	public static function tableName(){  
+        return self::$_tableName;
+    }	
 
 	/**
 	 * 加入购物车

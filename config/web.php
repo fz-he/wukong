@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 $_SYSTEM_CONFIG = require(__DIR__ . '/db.php');
 
 $config = [
-    'id' => '',
+    'id' => 'wukong',
     'basePath' => dirname(__DIR__),
 	'language' => 'ru' ,
     'bootstrap' => ['log'],

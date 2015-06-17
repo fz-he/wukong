@@ -4,14 +4,15 @@ namespace app\components\helpers;
 
 use Yii;
 use app\components\helpers\ArrayHelper;
+use app\models\Appmodel;
 
 class OtherHelper {
 	
 	public static 	function eb_gen_url($content = '',$ending_with_slash = false,$param = array(),$symbol = '?', $language_code = ''){
 		global $lang_basic_url;
-		$CI = & get_instance();
+		$appModelObj = Appmodel::getInstanceObj();
 		if ( empty( $language_code ) ){
-			$language_code = $CI->session->get('language_code');
+			$language_code = $appModelObj->currentLanguageCode();
 		}
 		$base_url = ArrayHelper::id2name($language_code,$lang_basic_url,BASIC_URL);
 
@@ -412,17 +413,17 @@ class OtherHelper {
 	}
 
 	public static 	function formatPrice($price = 0,$currency = '' , $rateNumber = '' ){
-		$CI = & get_instance();
+		$appModelObj = Appmodel::getInstanceObj();
 		if(empty($currency)){
-			$currency = $CI->m_app->currentCurrency();
+			$currency = $appModelObj->currentCurrency();
 		}
 		if($currency !== false) {
-			// $rate = $CI->m_app->getConfig(strtolower($currency).'_rate',1);
-			// $price_format = $CI->m_app->getConfig(strtolower($currency).'_price_format','$%s');
+			// $rate = $appModelObj->getConfig(strtolower($currency).'_rate',1);
+			// $price_format = $appModelObj->getConfig(strtolower($currency).'_price_format','$%s');
 			// $price = number_format(sprintf("%.2f",$price*$rate), 2);
 			// $price = sprintf($price_format,$price);
 
-			$currencyInfo = $CI->m_app->getConfigCurrency($currency, 1);
+			$currencyInfo = $appModelObj->getConfigCurrency($currency, 1);
 			//若传有汇率过来 那么以传的汇率进行计算
 			if( empty( $rateNumber ) ){
 				$price = number_format( sprintf("%.2f", $price * $currencyInfo['rate']), 2);

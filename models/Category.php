@@ -4,8 +4,10 @@ namespace app\models;
 
 use Yii;
 use app\models\common\EbARModel as baseModel;
+use app\models\Cart;
 use app\components\helpers\HelpOther;
 use app\components\helpers\HelpUrl;
+use app\components\helpers\ArrayHelper;
 
 /**
  * 分类管理model
@@ -1009,28 +1011,46 @@ class Category extends baseModel {
 		$list = $this->memcache->get($cache_key,$cache_params);
 		if($list === false){
 			//取出所有的页面展示的分类
-			$this->db_ebmaster_read->select('id,p_id,name,url,type,path,image,product_active_num');
-			$this->db_ebmaster_read->from('category');
-			$this->db_ebmaster_read->where('status',1);
-			$this->db_ebmaster_read->where('name !=','');
-			$this->db_ebmaster_read->where('product_active_num >',0);
-			$this->db_ebmaster_read->where('url !=','');
-			$this->db_ebmaster_read->where('id >',15000);
-			$this->db_ebmaster_read->order_by('sort','desc');
-			$query = $this->db_ebmaster_read->get();
-			$list = $query->result_array();
-
+//			$this->db_ebmaster_read->select('id,p_id,name,url,type,path,image,product_active_num');
+//			$this->db_ebmaster_read->from('category');
+//			$this->db_ebmaster_read->where('status',1);
+//			$this->db_ebmaster_read->where('name !=','');
+//			$this->db_ebmaster_read->where('product_active_num >',0);
+//			$this->db_ebmaster_read->where('url !=','');
+//			$this->db_ebmaster_read->where('id >',15000);
+//			$this->db_ebmaster_read->order_by('sort','desc');
+//			$query = $this->db_ebmaster_read->get();
+//			$list = $query->result_array();
+			
 			//取出所有的分类的多语言信息
-			$this->db_ebmaster_read->select('category_id,name');
-			$this->db_ebmaster_read->from('category_desc');
-			$this->db_ebmaster_read->where('language_id',$languageId);
-			$this->db_ebmaster_read->where('name !=','');
-			$this->db_ebmaster_read->group_by('category_id');
-			$query = $this->db_ebmaster_read->get();
-			$multilingual = $query->result_array();
+//			$this->db_ebmaster_read->select('category_id,name');
+//			$this->db_ebmaster_read->from('category_desc');
+//			$this->db_ebmaster_read->where('language_id',$languageId);
+//			$this->db_ebmaster_read->where('name !=','');
+//			$this->db_ebmaster_read->group_by('category_id');
+//			$query = $this->db_ebmaster_read->get();
+//			$multilingual = $query->result_array();
+			
+			$query = static::find();
+					
+			$query->select('id,p_id,name,url,type,path,image,product_active_num');
+			$query->from('category');
+			$query->where(['status'=>1, 'product_active_num'=> '>0', 'id','>15000']);
+			$query->andWhere('name !=\'\' and url !=\'\' ');	
+			$query->orderBy(['sort'=> SORT_DESC]);
+			$list = $query->asArray()->all(); var_dump($query);die;
+			var_dump($list);die;
+			$query = static::find();
+			$query->select('category_id, name');
+			$query->from('category_desc');
+			$query->where(['language_id'=> $languageId]);
+			$query->andWhere('name !=\'\'');
+			$query->groupBy('category_id');
+			$multilingual = $query->asArray()->all(); 
+			
 
 			//分类的id为分类的多语言信息数组的key
-			$multilingual = reindexArray($multilingual,'category_id');
+			$multilingual = ArrayHelper::reindexArray($multilingual,'category_id');
 			foreach($list as $key => $record){
 				if(!isset($multilingual[$record['id']])){
 					unset($list[$key]);
@@ -1225,7 +1245,7 @@ AND a.`market_price` != '0.00'
 					4 => array('sort' =>'price_desc' ),
 		 );
 		if((int)$catId > 0 && isset( $sortArr[ $sort ] ) ){
-			$productObj = new ProductModel();
+			$productObj = Product::getInstanceObj();
 			$lists = $productObj->getCategoryProductIds( $catId ,1 , array(), $sortArr[$sort] , $startCount , $pageSize, array(), $isScriptTask );
 			$result = $lists['goodsList'];
 		}

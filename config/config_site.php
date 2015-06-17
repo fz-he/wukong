@@ -59,6 +59,7 @@ define('ROOT_PATH', str_replace('application/config/config_site.php', '', str_re
 | config_item('base_url') : $config['base_url'] in config.php:
 */
 //define('BASIC_URL',config_item('base_url').'/');
+define('BASIC_URL', '/');
 define( 'CUSTOM_SERVICE_EMAIL', 'cs@'.COMMON_DOMAIN );
 
 //检测移动版 修改配置文件 @add 20150204 11:49

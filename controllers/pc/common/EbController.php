@@ -12,8 +12,11 @@ use app\libraries\Log;
 use app\models\Appmodel;
 use app\models\Users;
 use app\models\Banner;
+use app\models\Imagead;
+use app\models\Cart;
 use app\models\Category;
 use app\models\Categorydesc;
+use app\models\Keywordrecommend;
 use app\components\helpers\ArrayHelper;
 use app\components\helpers\HelpOther;
 use app\components\helpers\HelpUrl;
@@ -56,7 +59,7 @@ class EbController extends Controller {
 		$this->log =  Log::getInstance();
 		$this->memcache =  Memcache::getInstance();
 		$this->session =  Session::getInstance();
-		$this->m_app = new Appmodel;
+		$this->m_app = Appmodel::getInstanceObj();
 
 		$this->viewData['language_code'] = $this->_resolveCurrentLanguage();
 		$this->viewData['currency'] = $this->_resolveCurrentCurrency(); 
@@ -91,32 +94,33 @@ class EbController extends Controller {
 		/*
 		 * get page head,header&footer data & save to $this->viewData
 		 */
-//		$this->_addHeadData();
-//		$this->_addHeaderData();
-//		$this->_addFooterData();
+		$this->_addHeadData();
+		$this->_addHeaderData();
+		$this->_addFooterData();
 
 		/*
 		 * close databases master&slave
 		 */
-//		$this->db_read->close();
-//		$this->db_write->close();
-//		//抛到页面sql 使用情况
-//		$this->viewData['open_analysis_log_status'] = FALSE;
-		// if( defined('OPEN_LOG_ANALYSIS') && OPEN_LOG_ANALYSIS === TRUE ){
-		// 	$this->viewData['open_analysis_log_status'] = TRUE ;
-		// 	$this->viewData['analysis_log'] = $GLOBALS['analysis_log'];
-		// }
+		$this->db_read->close();
+		$this->db_write->close();
+		//抛到页面sql 使用情况
+		$this->viewData['open_analysis_log_status'] = FALSE;
+		 if( defined('OPEN_LOG_ANALYSIS') && OPEN_LOG_ANALYSIS === TRUE ){
+		 	$this->viewData['open_analysis_log_status'] = TRUE ;
+		 	$this->viewData['analysis_log'] = $GLOBALS['analysis_log'];
+		 }
 
-//		$this->viewData['captchaInvalid'] = lang('p_captcha_invalid');
-//		/*
-//		 * render view
-//		 */
-//		$curClass = $strtolower(get_class($this));
-//		if( empty( $templet ) ){
-//			parent::render(  $curClass . '.html.php' , $this->viewData );
-//		}else {
-//			parent::render( strtolower( $templet ) . '.html.php' ,$this->viewData);
-//		}
+		$this->viewData['captchaInvalid'] = lang('p_captcha_invalid');
+		/*
+		 * render view
+		 */
+		$curClass = $strtolower(get_class($this));
+		if( empty( $templet ) ){
+			parent::render(  $curClass . '.html.php' , $this->viewData );
+		}else {
+			parent::render( strtolower( $templet ) . '.html.php' ,$this->viewData);
+		}
+		die;
 		return $this->render( strtolower( $templet ) . '.html.php' , $this->viewData);
 	}
 
@@ -199,7 +203,9 @@ class EbController extends Controller {
 	 * get page head data & save to $this->viewData
 	 */
 	protected function _addHeadData(){
-		global $language_list;
+		$params = Yii::$app->params;
+		$language_list = $params['language_list'];
+
 		$language_id = $this->m_app->currentLanguageId();
 		$language_code = $this->m_app->currentLanguageCode();
 
@@ -209,12 +215,12 @@ class EbController extends Controller {
 			if($_SERVER['REQUEST_URI'] && strpos($_SERVER['REQUEST_URI'],'?')!==false){
 				$canonical = $_SERVER['REQUEST_URI'];
 				$canonical = substr($canonical,1,strpos($_SERVER['REQUEST_URI'],'?')-1);
-				$canonical = eb_gen_url($canonical);
+				$canonical = OtherHelper::eb_gen_url($canonical);
 				$canonical = "<link rel='canonical' href='{$canonical}' />";
 			}
 			$this->viewData['head']['canonical'] = $canonical;
 		}
-
+	
 		//header meta content-language
 		if(!isset($this->viewData['head']['html_meta_lang'])){
 			if(isset($language_list[$language_id])){
@@ -224,20 +230,21 @@ class EbController extends Controller {
 			}
 			$this->viewData['head']['html_meta_lang'] = '<meta http-equiv="content-language" content="' . $meta_lang .'" />';
 		}
-
+	
 		//header meta alternate
-		if(!isset($this->viewData['head']['html_google_rel']) && $this->router->class != 'atoz' && $this->router->class != 'buy'){
-			global $language_list;
-			global $lang_basic_url;
+		if(!isset($this->viewData['head']['html_google_rel']) && Yii::$app->controller->id != 'pc/atoz' && Yii::$app->controller->id != 'pc/buy'){
+//			global $language_list;
+			global $lang_basic_url;			
+			
 			$html_google_rel_list = array();
 			foreach($language_list as $record){
-				$html_google_rel_list[$record['common_code']] = ArrayHelper::id2name($record['code'],$lang_basic_url,BASIC_URL).uri_string();
+				$html_google_rel_list[$record['common_code']] = ArrayHelper::id2name($record['code'],$lang_basic_url,BASIC_URL);//.uri_string();
 			}
 			$this->viewData['head']['html_google_rel'] = $html_google_rel_list;
 		}
 
 		//SEO优化
-		if(!isset($this->viewData['head']['html_google_rel_seo']) && $this->router->class != 'atoz' && $this->router->class != 'buy'){
+		if(!isset($this->viewData['head']['html_google_rel_seo']) && Yii::$app->controller->id  != 'pc/atoz' && Yii::$app->controller->id  != 'pc/buy'){
 			$lang_basic_seo_url = array(
 									'us' => 'http://m.eachbuyer.com/',
 									'de' => 'http://m.eachbuyer.com/de/',
@@ -251,7 +258,7 @@ class EbController extends Controller {
 			$languageCode = $this->m_app->currentLanguageCode();
 			foreach($language_list as $record){
 				if($record['code'] == $languageCode){
-					$html_google_rel_seo_list[$record['common_code']] = ArrayHelper::id2name($languageCode,$lang_basic_seo_url,BASIC_URL).uri_string();
+					$html_google_rel_seo_list[$record['common_code']] = ArrayHelper::id2name($languageCode,$lang_basic_seo_url,BASIC_URL);//.uri_string();
 				}
 			}
 			$this->viewData['head']['html_google_rel_seo'] = $html_google_rel_seo_list;
@@ -343,28 +350,28 @@ class EbController extends Controller {
 		$this->viewData['header']['currency_list'] = $GLOBALS['currency_list'];
 
 		//image ad list
-		$this->load->model('Imageadmodel','m_imagead');
-		$this->viewData['header']['image_ad'] = $this->m_imagead->getImageAdList(14,$language_id);
+		$m_imagead = Imagead::getInstanceObj();
+		$this->viewData['header']['image_ad'] = $m_imagead->getImageAdList(14,$language_id);
 
 		//category tree
-		$this->CategoryModel = new CategoryModel();
-		$this->Categoryv2Model = new Categoryv2Model();;
-		$list = $this->Categoryv2Model->getShownCategory($language_id);
-		$list = spreadArray($list,'p_id');
+		//$this->CategoryModel = CategoryModel();
+		$categoryModelObj = Category::getInstanceObj();
+		$list = $categoryModelObj->getShownCategory($language_id);
+		$list = ArrayHelper::spreadArray($list,'p_id');
 		$list = $this->_buildList($list);
 		$this->viewData['header']['category_list'] = $list;
 
 		//keyword recommend
-		$this->KeywordrecommendModel = new KeywordrecommendModel();
+		$keywordrecommendModelOjb = Keywordrecommend::getInstanceObj();
 		$length_limit = 72;
-		$keyword_recommend_list = $this->KeywordrecommendModel->getKeywordRecommendList($language_id);
+		$keyword_recommend_list = $keywordrecommendModelOjb->getKeywordRecommendList($language_id);
 		foreach($keyword_recommend_list as $key => $record){
 			$keyword = trim($record['keyword']);
-			$keyword_recommend_list[$key]['url'] = eb_gen_url('search').'?keywords='.urlencode($keyword);
+			$keyword_recommend_list[$key]['url'] = OtherHelper::eb_gen_url('search').'?keywords='.urlencode($keyword);
 			$keyword_recommend_list[$key]['length'] = strlen($keyword);
 			$keyword_recommend_list[$key]['keyword'] = $keyword;
 		}
-		sortArray($keyword_recommend_list,'length');
+		ArrayHelper::sortArray($keyword_recommend_list,'length');
 		$total_lenth = 0;
 		$keyword_recommend_list_buffer = array();
 		foreach($keyword_recommend_list as $key => $record){
@@ -549,7 +556,7 @@ class EbController extends Controller {
 			return;
 		}
 
-		if(is_spider()){
+		if(OtherHelper::is_spider()){
 			return;
 		}
 		$this->viewData['header_cart'] = $this->_getUserCartInfo();
@@ -606,7 +613,7 @@ class EbController extends Controller {
 		if ($user_cart_all && isset($user_cart_all[$languageCode . '_' . $currency])) {
 			$cart = $user_cart_all[$languageCode . '_' . $currency];
 		} else {
-			$cartObj = CartModel::getInstanceObj();
+			$cartObj = Cart::getInstanceObj();
 			$cartObj->loadCart();
 			$cart = $cartObj->getCart();//加载购物车信息
 			$user_cart_all[$languageCode . '_' . $currency] = $cart;

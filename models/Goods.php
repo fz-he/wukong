@@ -111,13 +111,19 @@ class Goods extends baseModel {
 		$cache_params = array($languageId);
 		$record = $this->memcache->get($cache_key,$cache_params);
 		if($record === false){
-			$this->db_read->from('new_goods_recommend_desc');
-			$this->db_read->where('language_id',$languageId);
-			$this->db_read->limit(1);
-			$query = $this->db_read->get();
-			$record = $query->row_array();
-
-			$this->memcache->set($cache_key,$record,$cache_params);
+//			$this->db_read->from('new_goods_recommend_desc');
+//			$this->db_read->where('language_id',$languageId);
+//			$this->db_read->limit(1);
+//			$query = $this->db_read->get();
+//			$record = $query->row_array();
+			
+			$sql = 'SELECT * FROM new_goods_recommend_desc WHERE language_id = :languageId limit 1';
+			$command =  $this->db_read->createCommand( $sql );
+			$command->bindValue(':languageId', $languageId);
+			$record = $command->queryOne();
+			if ( !empty( $record ) ){
+				$this->memcache->set($cache_key,$record,$cache_params);
+			}
 		}
 
 		return $record;

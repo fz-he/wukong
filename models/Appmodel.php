@@ -17,10 +17,21 @@ class Appmodel extends EbARModel {
 	);
 
 	protected $_config = null;
+	private static $_instance = NULL;
 
 	public function __construct(){
 		parent::__construct();
 	}
+	public static function getInstanceObj( ){
+		if ( self::$_instance === NULL ){
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
+	
+	public static function getDb(){  
+        return Yii::$app->eachbuyer_eb_slave;
+    }
 /*
 | -------------------------------------------------------------------
 |  Config Functions
@@ -46,10 +57,15 @@ class Appmodel extends EbARModel {
 		$cache_params = array($key, $default);
 		$result = $this->memcache->get( $cache_key , $cache_params );
 		if( $result === false ) {
-			$this->db_ebmaster_read->select('code, rate, format');
-			$this->db_ebmaster_read->from('currency');
-			$query = $this->db_ebmaster_read->get();
-			$result = $query->result_array();
+//			$this->db_ebmaster_read->select('code, rate, format');
+//			$this->db_ebmaster_read->from('currency');
+//			$query = $this->db_ebmaster_read->get();
+//			$result = $query->result_array();			
+
+			$sql = 'SELECT code, rate, format FROM currency';
+			$command =  $this->db_ebmaster_read->createCommand( $sql );
+			$result = $command->queryAll();
+
 			$resultMc = array();
 			if( !empty( $result ) && is_array( $result ) ){
 				foreach ( $result as $v ){
@@ -69,13 +85,18 @@ class Appmodel extends EbARModel {
 	protected function _loadShopConfig(){
 		$cache_key = 'idx_load_shop_config';
 		$config = $this->memcache->get($cache_key);
-		if($config === false){
-			$this->db_read->select('code,value');
-			$this->db_read->from('shop_config');
-			$this->db_read->where('parent_id >',0);
-			$query = $this->db_read->get();
-			$list = $query->result_array();
+		if($config === false){			
+//			$this->db_read->select('code,value');
+//			$this->db_read->from('shop_config');
+//			$this->db_read->where('parent_id >',0);
+//			$query = $this->db_read->get();
+//			$list = $query->result_array();
 
+			$sql = 'SELECT code, value FROM shop_config where parent_id > :parent_id';
+			$command =  $this->db_read->createCommand( $sql );
+			$command->bindValue(':parent_id', 0);
+			$list = $command->queryAll();
+			
 			$config = array();
 			foreach ($list as $record){
 				$config[$record['code']] = $record['value'];
